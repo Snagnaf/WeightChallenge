@@ -1,4 +1,4 @@
-#WeightChallenge
+WeightChallenge
 
 Questo sito vuole creare un modo facile, simpatico e immediato
 per confrontare il peso e le dimensioni di oggetti e animali.

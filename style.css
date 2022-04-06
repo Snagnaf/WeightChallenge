@@ -1,0 +1,61 @@
+
+.header{
+    background-image: linear-gradient(rgb(133, 142, 214), rgb(161, 86, 161));
+    
+    text-align: center;
+    height: 20vh;
+    padding-top: 30px;
+}
+.titolo{
+    font: bold 50px "Courier New";
+}
+.center{
+    height: 60vh;
+    overflow-y: scroll;
+    background-color: rgb(158, 167, 255);
+    justify-content: center;
+}
+.center::-webkit-scrollbar {
+    width: 15px;
+  }
+  
+  /* Track */
+.center::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px rgb(255, 211, 160);
+    border-radius: 10px;
+  }
+  
+  /* Handle */
+.center::-webkit-scrollbar-thumb {
+    background: rgb(44, 78, 231);
+    border-radius: 10px;
+  }
+
+.tail{
+    text-align: center;
+    background-image: linear-gradient(rgb(161, 86, 161),white);
+    height: 25vh;
+    padding-top: 20px;
+    overflow-y: visible;
+}
+.board{
+    width: 80%;
+    margin: auto;
+}
+
+.cell{
+    width: 75px;
+    height: 75px;
+    padding: 5px;
+    background-color: rgb(255, 241, 255);
+    transition: background-color .5s;
+}
+.cell:hover{
+    background-color: rgb(255, 211, 160);
+}
+ 
+.challenge{
+    width:90%;
+    margin: auto;
+    
+}
