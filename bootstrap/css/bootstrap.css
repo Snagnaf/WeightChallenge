@@ -2020,15 +2020,15 @@ progress {
 }
 
 .table-primary {
-  --bs-table-bg: #cfe2ff;
-  --bs-table-striped-bg: #c5d7f2;
-  --bs-table-striped-color: #000;
+  --bs-table-bg: rgb(158, 167, 255);
+  --bs-table-striped-bg: rgb(140, 125, 211);
+  --bs-table-striped-color: white;
   --bs-table-active-bg: #bacbe6;
-  --bs-table-active-color: #000;
+  --bs-table-active-color: white;
   --bs-table-hover-bg: #bfd1ec;
-  --bs-table-hover-color: #000;
-  color: #000;
-  border-color: #bacbe6;
+  --bs-table-hover-color: white;
+  color: white;
+  border-color: rgb(255, 211, 160);
 }
 
 .table-secondary {

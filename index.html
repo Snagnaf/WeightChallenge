@@ -8,78 +8,10 @@
 
     <link rel="stylesheet" href="style.css" type="text/css">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
-
-    <script>
-        function allowDrop(ev) {
-          ev.preventDefault();
-        }
-        
-        function drag(ev) {
-          ev.dataTransfer.setData("text", ev.target.id);
-        }
-        
-        function drop(ev) {
-          ev.preventDefault();
-          var data = ev.dataTransfer.getData("text");
-          //ev.target.removeChild();
-          ev.target.appendChild(document.getElementById(data));
-
-          
-          const scontro = document.createElement('div');
-          scontro.className = 'row';
-
-          scontro.innerHTML = `
-          <table class="table table-primary table-striped">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Animal 1</th>
-      <th scope="col">Animal 2</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">Image</th>
-      <td>Mark</td>
-      <td>Otto</td>
-    </tr>
-    <tr>
-      <th scope="row">Name</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-    </tr>
-    <tr>
-      <th scope="row">Weight</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-    </tr>
-    <tr>
-      <th scope="row">Volume</th>
-      <td>Mark</td>
-      <td>Otto</td>
-    </tr>
-    <tr>
-      <th scope="row">Height</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-    </tr>
-    <tr>
-      <th scope="row">width</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-    </tr>
-  </tbody>
-</table>
-            `;
-
-
-          document.getElementById("sfida").append(scontro);
-        }
-    </script>
-
+    <script src="script.js" type="application/javascript" ></script>
 
 </head>
-<body>
+<body onload="loadAnimals()">
     <div class="header  rounded-bottom">
         <div class="titolo text-warning">WeightChallenge</div>
         <div class="text-white form-check form-check-inline">
@@ -94,29 +26,11 @@
             <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" disabled>
             <label class="form-check-label" for="inlineCheckbox3">Planets</label>
           </div>
+          <button class="btn btn-warning" onclick="window.location.href='form/form.html'">+ new Animals</button>
     </div> 
     <div class="center">
-        <div id="tavola" class="board d-flex flex-wrap">
-            <script>
-                for (let i = 0; i < 60; i++) {
-                    var cell = document.createElement('div');
-                    cell.className ='cell border border-2 border-warning';
-                    cell.setAttribute("ondrop","drop(event)");
-                    cell.setAttribute("ondragover","allowDrop(event)");
-
-                    var animal = document.createElement('img');
-                    
-                    animal.setAttribute("src","elephant.png");
-                    animal.id=animal.src+i;
-                    animal.setAttribute("draggable","true");
-                    animal.setAttribute("ondragstart","drag(event)");
-                    animal.setAttribute("height","60px");
-                    animal.setAttribute("width","60px");
-                    cell.appendChild(animal);
-
-                    document.getElementById('tavola').append(cell);
-                }
-            </script>
+        <div id="tavola" class="board  flex-column flex-wrap">
+            
             
             
         </div>

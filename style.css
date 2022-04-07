@@ -3,7 +3,7 @@
     background-image: linear-gradient(rgb(133, 142, 214), rgb(161, 86, 161));
     
     text-align: center;
-    height: 20vh;
+    height: 170px;
     padding-top: 30px;
 }
 .titolo{
@@ -11,7 +11,7 @@
 }
 .center{
     height: 60vh;
-    overflow-y: scroll;
+    overflow-x: scroll;
     background-color: rgb(158, 167, 255);
     justify-content: center;
 }
@@ -39,13 +39,14 @@
     overflow-y: visible;
 }
 .board{
-    width: 80%;
-    margin: auto;
+    height: 100%;
+    display: flex;
+    flex-flow: column wrap;
+    align-content: flex-start
 }
 
 .cell{
-    width: 75px;
-    height: 75px;
+    flex: 1 1 75px;
     padding: 5px;
     background-color: rgb(255, 241, 255);
     transition: background-color .5s;
@@ -58,4 +59,12 @@
     width:90%;
     margin: auto;
     
+}
+.greater{
+    --bs-table-bg: rgba(0, 128, 0, 0.76);
+    --bs-table-striped-bg: rgba(0, 128, 0, 0.363);
+}
+.smaller{
+    --bs-table-bg: rgba(185, 50, 50, 0.938);
+    --bs-table-striped-bg: rgba(185, 50, 50, 0.664);
 }
