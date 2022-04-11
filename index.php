@@ -12,6 +12,10 @@
     <link rel="stylesheet" href="style.css" type="text/css">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
     <script src="script.js" type="application/javascript" ></script>
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
 <script>
 
 function allowDrop(ev) {
@@ -28,78 +32,41 @@ function drop(ev) {
   var animale1 = document.getElementById(data);
   var animale2 = ev.target;
   var parent = animale2.parentElement;
-  parent.innerHTML="";
-  parent.appendChild(animale1);
-  const s = `<?php echo stampChallenge("elefante","coccodrillo");?>`; 
+      parent.innerHTML="";
+      
+  $.ajax({
+    data: 'id_animal1=' + animale1.id+'&id_animal2='+animale2.id,
+    url: 'winner.php',
+    method: 'GET', // or GET
+    success: function(msg) {
+      if(animale1.id==msg){
+        parent.appendChild(animale1);
+      }else{
+        parent.appendChild(animale2);
+      }
+    }
+   });
 
-document.getElementById("sfida").innerHTML=s;
-window.scrollTo(0,window.innerHeight);
+
+  $.ajax({
+    data: 'id_animal1=' + animale1.id+'&id_animal2='+animale2.id,
+    url: 'prova.php',
+    method: 'GET', // or GET
+    success: function(msg) {
+      document.getElementById("sfida").innerHTML=msg;
+
+      
+    }
+   });
+
+
+
+  window.scrollTo(0,window.innerHeight);
 }
 
 </script>
 
-<?php
 
-function stampChallenge($id_animal1,$id_animal2){
-
-$animalarray1=array("id"=>$id_animal1,"foto"=>"foto/elephant.png");
-$animalarray2=array("id"=>$id_animal2,"foto"=>"foto/crocodile.png");
-    $dbconn = pg_connect("host=localhost dbname=WeightChallengeDB
-    port=5432 user=postgres password=postgres");
-
-
-    //verifica dati
-    $query1 = "select * from animal where animale='" . $animalarray1["id"]."'";
-    $result1 = pg_query($dbconn, $query1);
-    $animal1 = pg_fetch_array($result1);
-    $query2 = "select * from animal where animale='" . $animalarray2["id"]."'";
-    $result2 = pg_query($dbconn, $query2);
-    $animal2 = pg_fetch_array($result2);
-    
-    return '<table class="table table-primary table-striped">
-<thead>
-<tr>
-<th scope="col">#</th>
-<th scope="col">'.$animal1["animale"].'</th>
-<th scope="col">'.$animal2["animale"].'</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th scope="row">Image</th>
-<td><img src="'.$animal1["foto"].'" height="80px" width="80px"></td>
-<td><img src="'.$animal2["foto"].'" height="80px" width="80px"></td>
-</tr>
-<tr>
-<th scope="row">Name</th>
-<td>'.$animal1["nome"].'</td>
-<td>'.$animal2["nome"].'</td>
-</tr>
-<tr>
-<th scope="row" >Weight</th>
-<td class="smaller">'.$animal1["peso"].'</td>
-<td class="greater">'.$animal2["peso"].'</td>
-</tr>
-<tr>
-<th scope="row" >Volume</th>
-<td class="greater">'.$animal1["volume"].'</td>
-<td class="smaller">'.$animal2["volume"].'</td>
-</tr>
-<tr>
-<th scope="row">Height</th>
-<td class="greater">'.$animal1["altezza"].'</td>
-<td class="smaller">'.$animal2["altezza"].'</td>
-</tr>
-<tr>
-<th scope="row">Life</th>
-<td class="greater">'.$animal1["vita"].'</td>
-<td class="smaller">'.$animal2["vita"].'</td>
-</tr>
-</tbody>
-</table>
-<br>';
-}
-?>
 
 </head>
 <body >
