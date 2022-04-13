@@ -3,14 +3,15 @@
     background-image: linear-gradient(rgb(133, 142, 214), rgb(161, 86, 161));
     
     text-align: center;
-    height: 170px;
+    height: 30vh;
+    min-height: 140px;
     padding-top: 30px;
 }
 .titolo{
     font: bold 50px "Courier New";
 }
 .center{
-    height: 60vh;
+    height: 70vh;
     overflow-x: scroll;
     background-color: rgb(158, 167, 255);
     justify-content: center;
@@ -52,6 +53,8 @@
     padding: 5px;
     background-color: rgb(255, 241, 255);
     transition: background-color .5s;
+    
+    
 }
 .cell:hover{
     background-color: rgb(255, 211, 160);
@@ -70,4 +73,29 @@
 .smaller{
     --bs-table-bg: rgba(185, 50, 50, 0.938);
     --bs-table-striped-bg: rgba(185, 50, 50, 0.664);
+}
+
+.blink-bg{
+    animation: blinkingBackground 2s ;
+}
+
+@keyframes blinkingBackground{
+    0%		{ background-color: #ef0a1a;}
+    25%		{ background-color: rgb(255, 241, 255)}
+    50%		{ background-color: #ef0a1a;}
+    75%		{ background-color: rgb(255, 241, 255)}
+    100%	        { background-color: #ef0a1a;}
+}
+.eat_false{
+    animation: blinkingBackground 1s ;
+}
+.eat_true{
+    animation: eating 1s ;
+}
+@keyframes eating{
+    0%		{ background-color: green}
+    25%		{ background-color: rgb(255, 241, 255)}
+    50%		{ background-color: green}
+    75%		{ background-color: rgb(255, 241, 255)}
+    100%	        { background-color: green;}
 }

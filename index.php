@@ -6,75 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WeightChallenge</title>
 
-    
-
 
     <link rel="stylesheet" href="style.css" type="text/css">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
     <script src="script.js" type="application/javascript" ></script>
-    <script
-  src="https://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous"></script>
-<script>
-
-function allowDrop(ev) {
-  ev.preventDefault();
-}
-
-function drag(ev) {
-  ev.dataTransfer.setData("text", ev.target.id);
-}
-
-function drop(ev) {
-  ev.preventDefault();
-  var data= ev.dataTransfer.getData("text");
-  var animale1 = document.getElementById(data);
-  var animale2 = ev.target;
-  var parent = animale2.parentElement;
-      parent.innerHTML="";
-      
-  $.ajax({
-    data: 'id_animal1=' + animale1.id+'&id_animal2='+animale2.id,
-    url: 'winner.php',
-    method: 'GET', // or GET
-    success: function(msg) {
-      if(animale1.id==msg){
-        parent.appendChild(animale1);
-      }else{
-        parent.appendChild(animale2);
-      }
-    }
-   });
-
-
-  $.ajax({
-    data: 'id_animal1=' + animale1.id+'&id_animal2='+animale2.id,
-    url: 'prova.php',
-    method: 'GET', // or GET
-    success: function(msg) {
-      document.getElementById("sfida").innerHTML=msg;
-
-      
-    }
-   });
-
-
-
-  window.scrollTo(0,window.innerHeight);
-}
-
-</script>
-
-
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    
 </head>
 <body >
     <div class="header  rounded-bottom">
         <div class="titolo text-warning">WeightChallenge</div>
         <div class="input-group" style="width:400px;margin:auto">
-          <input type="search"  class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon"  />
-          <button type="button" class="btn btn-outline-warning">search</button>
+          <input type="search"  id="search_text" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon"  />
+          <button type="button" id="search_button" class="btn btn-outline-warning" onclick="search()" >search</button>
           <button class="btn btn-warning" onclick="window.location.href='form/form.html'" style="margin-left:20px">+ new Animals</button>
       </div>
       </div> 
