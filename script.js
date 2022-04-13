@@ -11,6 +11,18 @@ function drag(ev) {
 
 function drop(ev) {
   ev.preventDefault();
+
+  document.getElementById("tail").classList.add("grow");
+      
+      setTimeout(function(){
+        document.getElementById("tail").className = "tail";
+    }, 1000);
+    document.getElementById("tail").style.top = "40vh";
+    document.getElementById("tail").style.height = "60vh";
+    document.getElementById("tail").style.padding = "20px";
+    document.getElementById("close_button").value="close";
+    document.getElementById("close_button").textContent="close";
+  
   var data= ev.dataTransfer.getData("text");
   var animale1 = document.getElementById(data);
   var animale2 = ev.target;
@@ -58,6 +70,34 @@ function drop(ev) {
   
 }
 
+function close_tail(ev){
+  if(document.getElementById("close_button").value=="close"){
+  document.getElementById("tail").classList.add("shrink");
+      
+  setTimeout(function(){
+    document.getElementById("tail").className = "tail";
+}, 1000);
+
+  document.getElementById("tail").style.top = "95vh";
+  document.getElementById("tail").style.height = "5vh";
+  document.getElementById("tail").style.padding = "0px";
+  document.getElementById("close_button").value="open";
+  document.getElementById("close_button").textContent="open";
+  document.getElementById("close_button").value="open";
+  }else{
+  document.getElementById("tail").classList.add("grow");
+      
+      setTimeout(function(){
+        document.getElementById("tail").className = "tail";
+    }, 1000);
+    document.getElementById("tail").style.top = "40vh";
+    document.getElementById("tail").style.height = "60vh";
+    document.getElementById("tail").style.padding = "20px";
+    document.getElementById("close_button").value="close";
+    document.getElementById("close_button").textContent="close";
+  }
+}
+
 
 //Search
 function search(){
@@ -66,10 +106,37 @@ function search(){
     if(picture!=null){
       var cell = picture.parentElement;
       cell.classList.add("blink-bg");
-      cell.scrollIntoView();
+      //lo scroll non funge
+      $("center").scrollTo = picture.top;
+      $("center").scrollTo = picture.left;
       
       setTimeout(function(){
         cell.className = "cell border border-2 border-warning";
     }, 2000);
     }
 }
+
+
+
+
+
+function makeNewPosition(){
+  
+  // Get viewport dimensions (remove the dimension of the div)
+  var h = $(tavola).height() - $('.cell').height();
+  var w = $(tavola).width() - $('.cell').height();
+  
+  var nh = Math.floor(Math.random()*h);
+  var nw = Math.floor(Math.random()*w);
+  
+  return [nh,nw];    
+  
+}
+
+function animateDiv(myclass){
+  var newq = makeNewPosition();
+  $(myclass).animate({ top: newq[0], left: newq[1] }, 5000,   function(){
+    animateDiv(myclass);        
+  });
+  
+};

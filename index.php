@@ -14,7 +14,7 @@
     
 </head>
 <body >
-    <div class="header  rounded-bottom">
+    <div class="header ">
         <div class="titolo text-warning">WeightChallenge</div>
         <div class="input-group" style="width:400px;margin:auto">
           <input type="search"  id="search_text" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon"  />
@@ -22,7 +22,7 @@
           <button class="btn btn-warning" onclick="window.location.href='form/form.html'" style="margin-left:20px">+ new Animals</button>
       </div>
       </div> 
-    <div class="center">
+    <div id="center" class="center">
         <div id="tavola" class="board  ">
             <?php
                 //Connessione
@@ -35,21 +35,29 @@
             $result = pg_query($dbconn, $query);
             $arr = pg_fetch_all($result);
             foreach($arr as $animal){
-                echo '<div class="cell border border-2 border-warning" >
+                echo '<div class="cell border border-2 border-warning '.$animal["animale"].'">
                 <img src="'.$animal["foto"].'" id="'.$animal["animale"].'" draggable=true ondragstart="drag(event)"
                 ondragover="allowDrop(event)" ondrop="drop(event)"
-                height="80" width="80"> </div>
+                height="80" width="80">
+                <script>
+                $(document).ready(function(){
+  animateDiv(".'.$animal["animale"].'");
+});
+</script>
+                </div>
               ';
             }
             pg_close($dbconn);
             ?>
+            
         </div>
     </div>
-    <div class="tail rounded-top">
+    <div id="tail" class="tail">
+        <div class=close_div>
+                <button class="close btn btn-warning" id="close_button"  onclick="close_tail()"></button>
+            </div>
         <div id="sfida" class="challenge">
-        
-        
-
+            
         </div>
     </div>
 </body>

@@ -1,9 +1,9 @@
 
 .header{
-    background-image: linear-gradient(rgb(133, 142, 214), rgb(161, 86, 161));
+    background-image: linear-gradient(rgb(111, 175, 120), rgb(230, 255, 228));
     
     text-align: center;
-    height: 30vh;
+    height: 20vh;
     min-height: 140px;
     padding-top: 30px;
 }
@@ -11,48 +11,37 @@
     font: bold 50px "Courier New";
 }
 .center{
-    height: 70vh;
-    overflow-x: scroll;
-    background-color: rgb(158, 167, 255);
+    height: 80vh;
+    width:100vw;
     justify-content: center;
+    overflow: scroll;
 }
-.center::-webkit-scrollbar {
-    width: 15px;
-  }
-  
-  /* Track */
-.center::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px rgb(255, 211, 160);
-    border-radius: 10px;
-  }
-  
-  /* Handle */
-.center::-webkit-scrollbar-thumb {
-    background: rgb(44, 78, 231);
-    border-radius: 10px;
-  }
 
 .tail{
-    text-align: center;
-    background-image: linear-gradient(rgb(161, 86, 161),white);
-    height: 25vh;
-    padding-top: 20px;
-    overflow-y: visible;
+    position:absolute;
+    background-color: white;
+    width:80vw;
+    left:10vw;
+
+  border-radius: 25px 25px 0px 0px;
+    bottom: 0px;
+    overflow: hidden;
 }
 .board{
-    height: 100%;
+    width: 1038px;
+    height: 802px;
+    background-image: url("foto/jungle.png");
+    position:relative;
     
-    display: flex;
-    flex-flow: column wrap;
-    align-content: flex-start
 }
 
 .cell{
-    flex: 0 0 95px;
-    width: 95px;
+    
     padding: 5px;
     background-color: rgb(255, 241, 255);
     transition: background-color .5s;
+    position:absolute;
+
     
     
 }
@@ -61,9 +50,11 @@
 }
  
 .challenge{
-    width:90%;
+    width:80%;
     max-width:600px;
+    height: 90%;
     margin: auto;
+    overflow-y: scroll;
     
 }
 .greater{
@@ -99,3 +90,49 @@
     75%		{ background-color: rgb(255, 241, 255)}
     100%	        { background-color: green;}
 }
+
+.close_div{
+    width:30%;
+    max-width:600px;
+    margin:auto;
+    height:30px
+}
+.close{
+    width:100%;
+}
+
+.grow{
+    animation: growTail 1s ;
+}
+
+@keyframes growTail {
+    from {
+        top:95vh;
+        height:5vh;
+        padding-top:00px;
+    }
+    to {
+        top:40vh;
+        height:60vh;
+        padding-top:20px;
+    }
+  }
+
+  .shrink{
+    animation: shrinkTail 1s ;
+}
+
+@keyframes shrinkTail {
+    from {
+        top:40vh;
+        height:60vh;
+        padding-top:20px;
+    }
+    to {
+        
+        top:95vh;
+        height:5vh;
+        padding-top:00px;
+    }
+  }
+  
