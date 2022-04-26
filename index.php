@@ -22,9 +22,49 @@
           <button class="btn btn-warning" onclick="window.location.href='form/form.html'" style="margin-left:20px">+ new Animals</button>
       </div>
       </div> 
+
     <div id="center" class="center">
-        <div id="tavola" class="board  ">
+      <div id="tavola" class="board " alt="zoom"  onmousedown="prendiSfondo(event)" panning="false" onmouseup="lasciaSfondo(event)" onmousemove="muoviSfondo(event)" onwheel="zoomSfondo(event)">
             <?php
+                //Connessione
+            $dbconn = pg_connect("host=localhost dbname=WeightChallengeDB
+                port=5432 user=postgres password=postgres");
+
+
+            //verifica dati
+            $query = "select * from animal";
+            $result = pg_query($dbconn, $query);
+            $arr = pg_fetch_all($result);
+            foreach($arr as $animal){
+                echo '<div class="cell border border-2 border-warning '.$animal["animale"].'" >
+                <img src="'.$animal["foto"].'" id="'.$animal["animale"].'" draggable=true  ondragstart="drag(event)"
+                ondragover="allowDrop(event)" ondrop="drop(event)"
+                onmousedown="distrai(event)" panning="false" onmouseup="distrai(event)" onmousemove="distrai(event)"  onwheel="zoomSfondo(event)"
+                height="'.$animal["altezza"].'" width="'.$animal["altezza"].'" class="oanimal">
+                <script>
+                $(document).ready(function(){
+  animateDiv(".'.$animal["animale"].'");
+});
+</script>
+                </div>
+              ';
+            }
+            pg_close($dbconn);
+            ?>
+            
+            
+
+      </div>
+    </div>
+    <script>
+        
+     
+    </script>
+        
+    <!--
+    <div id="center" class="center">
+        <div id="tavola" class="board ">
+            <?php /*
                 //Connessione
             $dbconn = pg_connect("host=localhost dbname=WeightChallengeDB
                 port=5432 user=postgres password=postgres");
@@ -47,11 +87,15 @@
                 </div>
               ';
             }
-            pg_close($dbconn);
+            pg_close($dbconn);*/
             ?>
             
+            
+
+
         </div>
     </div>
+        -->
     <div id="tail" class="tail">
         <div class=close_div>
                 <button class="close btn btn-warning" id="close_button"  onclick="close_tail()"></button>

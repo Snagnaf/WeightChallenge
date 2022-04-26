@@ -1,15 +1,71 @@
+// Sfondo esplorabile
+var scaleo = 1;
+pointXo = 0;
+pointYo = 0;
+starto = { x: 0, y: 0 };
+
+
+function setTransform(e) {
+  
+  document.getElementById('tavola').style.transform = "translate(" + pointXo + "px, " + pointYo + "px) scale(" + scaleo + ")";
+}
+
+function prendiSfondo(e){
+  e.preventDefault();
+  starto = { x: e.clientX - pointXo, y: e.clientY - pointYo };
+  e.target.panning = true;
+}
+function lasciaSfondo(e){
+  e.target.panning = false;
+}
+
+
+
+function muoviSfondo(e){
+
+  e.preventDefault();
+if (!e.target.panning) {
+  return;
+}
+pointXo = (e.clientX - starto.x);
+pointYo = (e.clientY - starto.y);
+setTransform(e);
+}
+function zoomSfondo(e){
+  e.preventDefault();
+var xs = (e.clientX - pointXo) / scaleo,
+  ys = (e.clientY - pointYo) / scaleo,
+  delta = (e.wheelDelta ? e.wheelDelta : -e.deltaY);
+(delta > 0) ? (scaleo *= 1.2) : (scaleo /= 1.2);
+pointXo = e.clientX - xs * scaleo;
+pointYo = e.clientY - ys * scaleo;
+
+setTransform(e);
+}
+
+
+
 
 
 // Drag and drop
+
+
+function distrai(ev){
+  ev.stopPropagation();
+}
+
 function allowDrop(ev) {
   ev.preventDefault();
 }
 
+
 function drag(ev) {
+  ev.stopPropagation();
   ev.dataTransfer.setData("text", ev.target.id);
 }
 
 function drop(ev) {
+  ev.stopPropagation();
   ev.preventDefault();
 
   document.getElementById("tail").classList.add("grow");
@@ -70,6 +126,9 @@ function drop(ev) {
   
 }
 
+//Gestione della coda
+
+
 function close_tail(ev){
   if(document.getElementById("close_button").value=="close"){
   document.getElementById("tail").classList.add("shrink");
@@ -107,17 +166,15 @@ function search(){
       var cell = picture.parentElement;
       cell.classList.add("blink-bg");
       //lo scroll non funge
-      $("center").scrollTo = picture.top;
-      $("center").scrollTo = picture.left;
+      var rect = picture.getBoundingClientRect();
+      zoom = document.getElementById("tavola");
+      zoom.style.transform = "translate(" + -rect.left+ "px, " + -rect.top + "px)";
       
       setTimeout(function(){
         cell.className = "cell border border-2 border-warning";
     }, 2000);
     }
 }
-
-
-
 
 
 function makeNewPosition(){
@@ -135,7 +192,7 @@ function makeNewPosition(){
 
 function animateDiv(myclass){
   var newq = makeNewPosition();
-  $(myclass).animate({ top: newq[0], left: newq[1] }, 5000,   function(){
+  $(myclass).animate({ top: newq[0], left: newq[1] }, 10000,   function(){
     animateDiv(myclass);        
   });
   
