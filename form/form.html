@@ -9,13 +9,15 @@
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
 
     <script>
-
-    </script>
+        function caricaUser(){
+            document.getElementById("user").value=localStorage.utente;
+        }
+        </script>
 
 
 
 </head>
-<body>
+<body onload="caricaUser()">
     <div class="header rounded-bottom titolo text-warning">
         Add a <br> new animal
         <button class="btn btn-warning" onclick="window.location.href='../index.php'">Back</button>
@@ -33,6 +35,10 @@
             </thead>
             -->
             <tbody>
+                <tr>
+                    <th scope="row">User</th>
+                    <td ><input type="text" id="user" name="inputUser" size="20" readonly></td>
+                    </tr>
                 <tr>
                     <th scope="row">Animal</th>
                     <td><input type="text" name="inputAnimal"></td>

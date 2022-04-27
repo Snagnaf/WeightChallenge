@@ -27,14 +27,15 @@
             echo "Nel nostro sito essere un animale uguale da prima<br>";
             echo"Riprova a crearne un altro <a href='form.html'> qui</a> !";
         }else{
+            $user = $_POST["inputUser"];
             $name = $_POST["inputName"];
             $image = $_POST["inputImage"];
             $weight = $_POST["inputWeight"];
             $volume = $_POST["inputVolume"];
             $height = $_POST["inputHeight"];
             $life = $_POST["inputLife"];
-            $query2 = 'insert into animal values ($1,$2,$3,$4,$5,$6,$7)';
-            $result = pg_query_params($dbconn, $query2, array($animal, $image, $name, $weight, $volume, $height, $life));
+            $query2 = 'insert into animal values ($1,$2,$3,$4,$5,$6,$7,$8)';
+            $result = pg_query_params($dbconn, $query2, array($animal, $image, $name, $weight, $volume, $height, $life,$user));
             if(!$tuple=pg_fetch_array($result, null, PGSQL_ASSOC)){
                 echo "<h2>Inserimento andato a buon fine</h2><br>";
                 echo "Vai <a href='../index.php'> qui</a> per continuare!";

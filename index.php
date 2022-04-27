@@ -1,4 +1,3 @@
-<!--prova-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,17 +9,20 @@
 
     <link rel="stylesheet" href="style.css" type="text/css">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="script.js" type="application/javascript" ></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     
 </head>
-<body >
-    <div class="header  rounded-bottom">
+<body onload="inizializzaStorageUtente()">
+    <div class="header  rounded-bottom" >
         <div class="titolo text-warning">WeightChallenge</div>
-        <div class="input-group" style="width:400px;margin:auto">
+        <div class="input-group" style="width:400px;margin:auto" id="gruppo_bottoni" >
           <input type="search"  id="search_text" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon"  />
           <button type="button" id="search_button" class="btn btn-outline-warning" onclick="search()" >search</button>
-          <button class="btn btn-warning" onclick="window.location.href='form/form.html'" style="margin-left:20px">+ new Animals</button>
+          <!-- Example single danger button -->
+          
+
       </div>
       </div> 
     <div class="center">
@@ -32,7 +34,7 @@
 
 
             //verifica dati
-            $query = "select * from animal";
+            $query = "select * from animal where utente is null";
             $result = pg_query($dbconn, $query);
             $arr = pg_fetch_all($result);
             foreach($arr as $animal){
