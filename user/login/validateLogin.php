@@ -19,7 +19,7 @@
             if(!$tuple = pg_fetch_array($result,null,PGSQL_ASSOC)){
                 echo "Login fallito<h3 id='nome'></h3>";
                 echo "Nel nostro sito non essere questa name";
-                echo "Vai <a href='../registration/index.html'> qui</a> per registrarti!";
+                echo "Vai <a href='../registrazione/index.html'> qui</a> per registrarti!";
             }else{
                 $password = md5($_POST["inputPassword"]); // Codifica
                 $query2 = 'select * from utente where name=$1 and psswrd=$2';

@@ -20,7 +20,7 @@
 
         //verifica dati
         $animal = $_POST["inputAnimal"];
-        $query = "select * from animal where animale=$1";
+        $query = "select * from animal where nome_scientifico=$1";
         $result = pg_query_params($dbconn, $query, array($animal));
         if($tuple = pg_fetch_array($result,null,PGSQL_ASSOC)){
             echo "<h1>Registrazione fallita</h3><br>";
@@ -29,13 +29,19 @@
         }else{
             $user = $_POST["inputUser"];
             $name = $_POST["inputName"];
-            $image = $_POST["inputImage"];
+
+            $image = $_FILES['inputImage']['tmp_name'];
+            $info = pathinfo($_FILES['inputImage']['name']);
+            $ext = $info['extension']; // get the extension of the file
+    		$saveto = "../foto/$animal.$ext";
+            move_uploaded_file($image, $saveto);
+
             $weight = $_POST["inputWeight"];
-            $volume = $_POST["inputVolume"];
+            $speed = $_POST["inputSpeed"];
             $height = $_POST["inputHeight"];
-            $life = $_POST["inputLife"];
+            $habitat = $_POST["inputHabitat"];
             $query2 = 'insert into animal values ($1,$2,$3,$4,$5,$6,$7,$8)';
-            $result = pg_query_params($dbconn, $query2, array($animal, $image, $name, $weight, $volume, $height, $life,$user));
+            $result = pg_query_params($dbconn, $query2, array($animal, $saveto, $name, $weight, $speed, $height, $user,$habitat));
             if(!$tuple=pg_fetch_array($result, null, PGSQL_ASSOC)){
                 echo "<h2>Inserimento andato a buon fine</h2><br>";
                 echo "Vai <a href='../index.php'> qui</a> per continuare!";

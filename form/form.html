@@ -24,7 +24,7 @@
     </div>
     <div style="padding-top:17px;">
     <div style="width:fit-content;margin:auto">
-    <form method="post" name="new_animal" action="createAnimal.php">
+    <form method="post" name="new_animal" action="createAnimal.php" enctype="multipart/form-data">
         <table class="table table-primary table-striped">
             <!-- 
             <thead>
@@ -40,19 +40,19 @@
                     <td ><input type="text" id="user" name="inputUser" size="20" readonly></td>
                     </tr>
                 <tr>
-                    <th scope="row">Animal</th>
+                    <th scope="row">Nome Scientifico</th>
                     <td><input type="text" name="inputAnimal"></td>
                     </tr>
             <tr>
-            <th scope="row">Image</th>
-            <td><input type="url" name="inputImage"></td>
+            <th scope="row">Foto</th>
+            <td><input type="file" name="inputImage"></td>
             </tr>
             <tr>
-            <th scope="row">Name</th>
+            <th scope="row">Nome</th>
             <td><input type="text" name="inputName" size="20"></td>
             </tr>
             <tr>
-            <th scope="row" >Weight</th>
+            <th scope="row" >Peso</th>
             <td>
                 <input type="number" name="inputWeight" size="20">
                 <select cols="20"  name="peso"  size="1" required>
@@ -62,35 +62,33 @@
             </td>
             </tr>
             <tr>
-            <th scope="row" >Volume</th>
+            <th scope="row" >Velocita</th>
             <td>
-                <input type="text" name="inputVolume" size="20">
-                <select cols="20"  name="peso"  size="1" required>
-                    <option value="kg">m^3</option>
-                    <option value="g">feet^3</option>
-                </select> 
+                <input type="text" name="inputSpeed" size="20">
+                <select cols="20"  name="speed"  size="1" required>
+                    <option value="m/s">m/s</option>
+                    <option value="feet/sec">feet/sec</option>
+                </select>
             </td>
             </tr>
             <tr>
-            <th scope="row">Height</th>
+            <th scope="row">Altezza</th>
             <td >
                 <input type="text" name="inputHeight" size="20">
-                <select cols="10"  name="peso"  size="1" required>
+                <select cols="10"  name="altezza"  size="1" required>
                     <option value="m">m</option>
                     <option value="feet">feet</option>
                 </select> 
             </td>
             </tr>
             <tr>
-            <th scope="row">Life span</th>
-            <td ><input type="text" name="inputLife" size="20"></td>
+            <th scope="row">Habitat</th>
+            <td ><input type="text" name="inputHabitat" size="20"></td>
             </tr>
             <tr>
                 <th scope="row"></th>
                 <td>
                     <input type="submit" class="btn btn-success" name="submitButton" style="margin:20px;" size="20">
-                    <input type="reset" class="btn btn-danger" name="reset" style="margin:20px;" size="20">
-                    
                 </td>
             </tr>
             </tbody>

@@ -28,7 +28,9 @@
     <div class="center">
         <div id="tavola" class="board  ">
             <?php
-                //Connessione
+                
+                //Connessione postgres
+            
             $dbconn = pg_connect("host=localhost dbname=WeightChallengeDB
                 port=5432 user=postgres password=postgres");
 
@@ -39,12 +41,13 @@
             $arr = pg_fetch_all($result);
             foreach($arr as $animal){
                 echo '<div class="cell border border-2 border-warning" >
-                <img src="'.$animal["foto"].'" id="'.$animal["animale"].'" draggable=true ondragstart="drag(event)"
+                <img src="'.$animal["foto"].'" id="'.$animal["nome_scientifico"].'" draggable=true ondragstart="drag(event)"
                 ondragover="allowDrop(event)" ondrop="drop(event)"
                 height="80" width="80"> </div>
               ';
             }
             pg_close($dbconn);
+            
             ?>
         </div>
     </div>

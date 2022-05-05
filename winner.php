@@ -7,10 +7,10 @@
 
 
     //verifica dati
-    $query1 = "select * from animal where animale='" . $id_animal1."'";
+    $query1 = "select * from animal where nome_scientifico='" . $id_animal1."'";
     $result1 = pg_query($dbconn, $query1);
     $animal1 = pg_fetch_array($result1);
-    $query2 = "select * from animal where animale='" . $id_animal2."'";
+    $query2 = "select * from animal where nome_scientifico='" . $id_animal2."'";
     $result2 = pg_query($dbconn, $query2);
     $animal2 = pg_fetch_array($result2);
 
