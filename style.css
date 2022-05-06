@@ -11,9 +11,8 @@
     font: bold 50px "Courier New";
 }
 .center{
-    height: 70vh;
+    height: 90vh;
     overflow-x: scroll;
-    background-color: rgb(158, 167, 255);
     justify-content: center;
 }
 .center::-webkit-scrollbar {
@@ -40,16 +39,18 @@
     overflow-y: visible;
 }
 .board{
-    height: 100%;
-    
+    background: url("foto/jungle1.png");
+    background-size: cover;
     display: flex;
-    flex-flow: column wrap;
-    align-content: flex-start
+    flex-direction: row;
+    flex-flow:wrap;
+    padding: 100px;
 }
 
 .cell{
     flex: 0 0 95px;
     width: 95px;
+    height: 95px;
     padding: 5px;
     background-color: rgb(255, 241, 255);
     transition: background-color .5s;

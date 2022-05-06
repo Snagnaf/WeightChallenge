@@ -15,7 +15,7 @@ $id_animal2 = $_GET['id_animal2'];
     $result2 = pg_query($dbconn, $query2);
     $animal2 = pg_fetch_array($result2);
 
-    $tabella = '<table class="table table-primary table-striped">
+    $tabella = '<table class="container-fluid justify-content-center">
     <thead>
     <tr>
     <th scope="col">#</th>

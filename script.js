@@ -6,7 +6,7 @@ function inizializzaStorageUtente(){
     localStorage.utente="";
     s += `
     <div class="btn-group" >
-<button type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" >
+<button type="button" class="btn btn-success ms-3 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" >
   + new Animal
 </button>
 <ul class="dropdown-menu">
@@ -19,7 +19,7 @@ function inizializzaStorageUtente(){
   }else{
     s += `
     <div class="btn-group" >
-                <button type="button"  class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" >
+                <button type="button"  class="btn btn-success ms-3 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" >
                 `+localStorage.utente+`
                 </button>
                 <ul class="dropdown-menu">
@@ -68,6 +68,9 @@ function drop(ev) {
   var parent = animale2.parentElement;
       parent.innerHTML="";
       
+  document.getElementById("animal_image_1").src=animale1.src;
+  document.getElementById("animal_image_2").src=animale2.src;
+  
   $.ajax({
     data: 'id_animal1=' + animale1.id+'&id_animal2='+animale2.id,
     url: 'winner.php',
@@ -101,10 +104,10 @@ function drop(ev) {
 
     }
    });
-
-   setTimeout(function(){
-    document.getElementById("sfida").scrollIntoView();
-}, 1000);
+   var myModal = new bootstrap.Modal(document.getElementById('confrontmodal'), {
+    keyboard: false
+  })
+   myModal.show();
    
   
 }
