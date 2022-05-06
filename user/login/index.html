@@ -1,25 +1,60 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <link rel="stylesheet" href="stylelogin.css" type="text/css">
     <link rel="stylesheet" href="../../bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="style.css">
     <script src="rememberMe.js" type="application/javascript" ></script>
+    <title>Login</title>
 </head>
-<body class="text-center">
-    <form name="myForm" action="validateLogin.php" method="post" class="form-singin"
-            onsubmit="valida()" >
-        Weight Challenge
-        <h1 class="mb-3">Loggati!</h1>
-        <input type="text" name="inputName" class="form-control" placeholder="Inserisci il tuo nome" required autofocus>
-        <input type="password" name="inputPassword" class="form-control" placeholder="Inserisci la password" required>
-        <div class="mb-2">
-            <input type="checkbox" name="remeberMe" id="rmb">
-            <label for="rmb">Requerdame!</label>
+<body>
+    <nav class="navbar navbar-expand-md justify-content-center fixed-top bg-dark navbar-dark">
+        <div class="container">
+            <a href="../../index.php" class="navbar-brand d-flex w-50 me-auto">ANIMAL SIZE</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsingNavbar3">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+           
+                <ul class="nav navbar-nav ms-auto w-100 justify-content-end py-1">
+                    <li class="nav-item">
+                      <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#aboutus">ABOUT US</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <button type="submit" name="loginButton" class="btn btn-primary" >Invia</button>
-    </form>
+        
+      </nav>
+    
+    <div class="form">
+        <div class="form-panel one">
+          <div class="form-header">
+            <h1>AnimalSize Login</h1>
+          </div>
+          <div class="form-content">
+            <form name="myForm" action="validateLogin.php" method="post" class="form-singin"
+            onsubmit="valida()">
+              <div class="form-group">
+                <label for="username">Nome utente</label>
+                <input id="username" type="text" name="inputName" required="required" class="from-control"/>
+              </div>
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input id="password" type="password" name="inputPassword" required="required" class="from-control"/>
+              </div>
+              <div class="form-group">
+                <label class="form-remember">
+                  <input id="rmb" type="checkbox" name="rememberMe"/>Ricordami
+                
+              </div>
+              <div class="form-group">
+                <button type="submit" name="loginButton">LogIn</button>
+              </div>
+            </form>
+          </div>
+        </div>
+    </div>
+      
 </body>
 </html>
