@@ -1,3 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+
+
+li, a, button{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.1em;
+    text-decoration: none;
+}
+
+
+/*body{
+    background-image:url(img/jungle2.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+}
+*/
+p{
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.modal-body p{
+    color: black;
+}
+/*https://jsfiddle.net/dux0xd3o/  */
+
+.carousel-control-prev-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E") !important;
+
+}
+
+.carousel-control-next-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
+
+}
+
+.navbar img {
+    height: 90px;
+    width: 90px;
+    border: 2px solid rgb(0, 0, 0);
+    background: white;
+}
+
+
+.button1{
+    font-size: 28px !important;
+    
+}
+
+.modal-body table td{
+    border: 2px solid black;
+}
+
+
+.nav2{
+    background: rgb(226,226,226);
+    background: -moz-linear-gradient(0deg, rgba(226,226,226,1) 0%, rgba(255,255,255,0) 100%);
+    background: -webkit-linear-gradient(0deg, rgba(226,226,226,1) 0%, rgba(255,255,255,0) 100%);
+    background: linear-gradient(0deg, rgba(226,226,226,1) 0%, rgba(255,255,255,0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#e2e2e2",endColorstr="#ffffff",GradientType=1);
+}
+
+.navbar{
+    min-height: 65px;
+}
+
+@media (min-width: 768px) {
+   
+}
+
+
+
 
 .header{
     background-image: linear-gradient(rgb(133, 142, 214), rgb(161, 86, 161));
