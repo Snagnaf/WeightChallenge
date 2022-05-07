@@ -113,23 +113,27 @@ p{
     overflow-y: visible;
 }
 .board{
-    background: url("foto/jungle1.png");
+    background: url("foto/jungle1.jpg");
     background-size: cover;
+    
     display: flex;
     flex-direction: row;
     flex-flow:wrap;
     padding: 100px;
+
+    position:relative;
+
 }
 
 .cell{
-    flex: 0 0 95px;
+    
     width: 95px;
     height: 95px;
     padding: 5px;
     background-color: rgb(255, 241, 255);
     transition: background-color .5s;
     
-    
+    flex: 0 0 95px;
 }
 .cell:hover{
     background-color: rgb(255, 211, 160);

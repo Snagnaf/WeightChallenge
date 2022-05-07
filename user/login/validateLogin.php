@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="rememberMe.js" type="application/javascript" ></script>
     <title>validateLogin</title>
 </head>
 <body>
@@ -26,23 +27,19 @@
                 $result = pg_query_params($dbconn, $query2, array($name, $password));
                 if($tuple=pg_fetch_array($result, null, PGSQL_ASSOC)){
                     $name = $tuple['name'];
-                    echo "Bentornato <h3 id='nome'>".$name."</h3>";
+                    echo "Bentornato <h3 id='nome' >$name</h3>";
                     echo "<h2>il login andato a essere buona fine</h2>";
-                    echo "clicca <a href='../../index.php'> qui</a> per accedere al sito ";
+                    echo "clicca <a href='../../index.php' > qui</a> per accedere al sito ";
                 }else{
                     echo "<h1>Errorrrreeeeeeeeeee</h1><h3 id='nome'></h3>";
                     echo "riprova <a href='index.html'> qui</a>!";
                 }
             }
 
-
-
-
-            
         }
     ?>
     <script>
-        localStorage.utente=document.getElementById("nome").innerText;
+        localStorage.utente=document.getElementById('nome').innerText;
     </script>
 </body>
 </html>

@@ -1,7 +1,10 @@
+var ricordami = false;
 function valida(){
     if(document.getElementById("rmb").checked){
-        alert("Hai scelto di essere ricordato!");
-    }else{
-        alert("Hai scelto di non essere ricordato!");
+        ricordami = true;
+
     }
+}
+function effettuata(nome){
+    if(ricordami) {localStorage.utente=nome;console.log("ok");}
 }

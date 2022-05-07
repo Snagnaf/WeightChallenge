@@ -6,71 +6,104 @@ function inizializzaStorageUtente(){
     localStorage.utente="";
     s += `
     <div class="btn-group" >
-<button type="button" class="btn btn-success ms-3 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" >
-  + new Animal
-</button>
-<ul class="dropdown-menu">
-  <li><a class="dropdown-item" href="user/login/index.html">Log in</a></li>
-  <li><hr class="dropdown-divider"></li>
-  <li><a class="dropdown-item" href="user/registrazione/index.html">New Account</a></li>
-</ul>
-</div>
+      <button type="button" class="btn btn-success ms-3 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" >
+        + new Animal
+      </button>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="user/login/index.html">Log in</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="user/registrazione/index.html">New Account</a></li>
+      </ul>
+    </div>
     `;
   }else{
     s += `
-    <div class="btn-group" >
-                <button type="button"  class="btn btn-success ms-3 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" >
-                `+localStorage.utente+`
-                </button>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="form/form.html">+ add Animal</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="index.php" onclick="resetStorageUtente()">Log out</a></li>
-                </ul>
-              </div> 
-    `;
+      <div class="btn-group" >
+        <button type="button"  class="btn btn-success ms-3 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" >
+          `+localStorage.utente+`
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="form/form.html">+ add Animal</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" href="index.php" onclick="resetStorageUtente()">Log out</a></li>
+        </ul>
+      </div> 
+    `;}
     $.ajax({
       data: 'name_utente=' +localStorage.utente,
       url: 'caricamento.php',
       method: 'GET', // or GET
       success: function(msg) {
-        document.getElementById("tavola").innerHTML+=msg;
+        document.getElementById("machebelloilcarosello").innerHTML+=msg;
+        
+        
   
       }
      });
-  }
+  
   document.getElementById("gruppo_bottoni").innerHTML +=s;
 
-  console.log(localStorage.utente);
+
 }
 function resetStorageUtente(){
   localStorage.utente="";
-  console.log(localStorage.utente);
+}
+
+//Select animal
+
+var counter = 0;
+function select_animal(ev){
+  counter++;
+  var animale = ev.target;
+  if(counter%2==0){
+    document.getElementById("animal_image_2").src=animale.src;
+    document.getElementById("animal_image_2").value = animale.id;
+  }else{
+    document.getElementById("animal_image_1").src=animale.src;
+    document.getElementById("animal_image_1").value = animale.id;
+  }
+
+  if(counter>1){
+  var animale1 = document.getElementById("animal_image_1").value;
+  var animale2 = document.getElementById("animal_image_2").value;
+  
+  $.ajax({
+    data: 'id_animal1=' + animale1+'&id_animal2='+animale2,
+    url: 'prova.php',
+    method: 'GET', // or GET
+    success: function(msg) {
+      document.getElementById("sfida").innerHTML=msg;
+
+    }
+   });}
+  
 }
 
 
 
 
 // Drag and drop
+
+
 function allowDrop(ev) {
+
   ev.preventDefault();
 }
 
 function drag(ev) {
+
   ev.dataTransfer.setData("text", ev.target.id);
 }
 
 function drop(ev) {
   ev.preventDefault();
   var data= ev.dataTransfer.getData("text");
-  var animale1 = document.getElementById(data);
-  var animale2 = ev.target;
-  var parent = animale2.parentElement;
-      parent.innerHTML="";
-      
-  document.getElementById("animal_image_1").src=animale1.src;
-  document.getElementById("animal_image_2").src=animale2.src;
-  
+  var animale = document.getElementById(data);
+  var box = ev.target;
+  box.src=animale.src;
+  box.value = animale.id;
+   
+  /*
   $.ajax({
     data: 'id_animal1=' + animale1.id+'&id_animal2='+animale2.id,
     url: 'winner.php',
@@ -93,23 +126,25 @@ function drop(ev) {
       }
     }
    });
+  }
+   */
 
+}
+function confronta(){
+  var animale1 = document.getElementById("animal_image_1").value;
+  var animale2 = document.getElementById("animal_image_2").value;
 
-  $.ajax({
-    data: 'id_animal1=' + animale1.id+'&id_animal2='+animale2.id,
-    url: 'prova.php',
-    method: 'GET', // or GET
-    success: function(msg) {
-      document.getElementById("sfida").innerHTML=msg;
+  if(!(animale1=="plus") && !(animale2=="plus")){
 
-    }
-   });
-   var myModal = new bootstrap.Modal(document.getElementById('confrontmodal'), {
-    keyboard: false
-  })
-   myModal.show();
-   
-  
+    $.ajax({
+      data: 'id_animal1=' + animale1+'&id_animal2='+animale2,
+      url: 'prova.php',
+      method: 'GET', // or GET
+      success: function(msg) {
+        document.getElementById("sfida").innerHTML=msg;
+      }
+     });
+  }
 }
 
 
@@ -127,3 +162,10 @@ function search(){
     }, 2000);
     }
 }
+
+//animazione div
+  
+
+
+
+

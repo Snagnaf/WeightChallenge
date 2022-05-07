@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+  box-sizing: border-box;
+}
+#container {
+  display: flex;
+}
+
+#container > div {
+  border: 1px solid gray;
+  padding: 1em;
+
+  height: 10em;
+  width: 50%;
+}
+
+#movable-element {
+  border: 1px solid green;
+  background-color: #00ff0033;
+  height: 95px;
+  width: 95px;
+}
+
+    </style>
+    <script>
+
+let moving = null;
+
+function pickup(event) {
+  moving = event.target;
+console.log(moving.clientHeight);
+  moving.style.height = moving.clientHeight;
+  moving.style.width = moving.clientWidth;
+  moving.style.position = 'fixed';
+}
+function move(event) {
+  if (moving) {
+      if (event.clientX) {
+          // mousemove
+          moving.style.left = event.clientX - moving.clientWidth/2;
+          moving.style.top = event.clientY - moving.clientHeight/2;
+      } else {
+          // touchmove - assuming a single touchpoint
+          moving.style.left = event.changedTouches[0].clientX - moving.clientWidth/2;
+          moving.style.top = event.changedTouches[0].clientY - moving.clientHeight/2;
+      }
+  }
+}
+
+
+  
+
+function init() {
+    document.getElementById("movable-element").addEventListener("touchstart", touchHandler, true);
+    document.getElementById("movable-element").addEventListener("touchmove", touchHandler, true);
+    document.getElementById("movable-element").addEventListener("touchend", touchHandler, true);
+    document.getElementById("movable-element").addEventListener("touchcancel", touchHandler, true);
+}
+
+function drag(event){
+
+  console.log("dragstart");
+}
+function drop(event){
+
+}
+function allowDrop(event){
+
+}
+
+
+    </script>
+</head>
+<body onload="init()">
+    <div id="container" >
+        <div id="left-parent" >
+            <div id="movable-element" draggable=true ondragstart="drag(event)"
+            ></div>
+        </div>
+
+        <div id="right-parent" ></div>
+    </div>
+</body>
+</html>

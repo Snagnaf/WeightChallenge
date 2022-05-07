@@ -30,18 +30,18 @@
             $user = $_POST["inputUser"];
             $name = $_POST["inputName"];
 
-            $image = $_FILES['inputImage']['tmp_name'];
-            $info = pathinfo($_FILES['inputImage']['name']);
-            $ext = $info['extension']; // get the extension of the file
-    		$saveto = "../foto/$animal.$ext";
-            move_uploaded_file($image, $saveto);
+            //file su database
+            
+            $img=file_get_contents($_FILES['inputImage']['tmp_name']);
+            $img_data = base64_encode($img);
+            $type=$_FILES['inputImage']['type'];
 
             $weight = $_POST["inputWeight"];
             $speed = $_POST["inputSpeed"];
             $height = $_POST["inputHeight"];
             $habitat = $_POST["inputHabitat"];
-            $query2 = 'insert into animal values ($1,$2,$3,$4,$5,$6,$7,$8)';
-            $result = pg_query_params($dbconn, $query2, array($animal, $saveto, $name, $weight, $speed, $height, $user,$habitat));
+            $query2 = 'insert into animal values ($1,$2,$3,$4,$5,$6,$7,$8,$9)';
+            $result = pg_query_params($dbconn, $query2, array($animal, $img_data, $name, $weight, $speed, $height, $user, $habitat, $type));
             if(!$tuple=pg_fetch_array($result, null, PGSQL_ASSOC)){
                 echo "<h2>Inserimento andato a buon fine</h2><br>";
                 echo "Vai <a href='../index.php'> qui</a> per continuare!";
@@ -49,6 +49,7 @@
                 echo"<h1 >ERROOREEEEE</h1>";
                 echo "riprova <a href='form.php'> qui</a>!";
             }
+            pg_close($dbconn);
         }
     }
 

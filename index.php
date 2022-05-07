@@ -12,10 +12,14 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     
     <script src="bootstrap/js/bootstrap.js" type="application/javascript" ></script>
+    <script>
+      
+    </script>
     
+
 </head>
 
-<body onload="inizializzaStorageUtente()">
+<body onload="inizializzaStorageUtente() " >
   <nav class="navbar navbar-expand-md justify-content-center fixed-top bg-dark navbar-dark">
     <div class="container">
         <a href="#logo" class="navbar-brand d-flex w-50 me-auto">ANIMAL SIZE</a>
@@ -61,44 +65,18 @@
   </div>
 
   <div id="carouselExampleControls" class="carousel carousel-dark slide" data-bs-interval="false">
-    <div class="carousel-inner">
+    <div class="carousel-inner" id="machebelloilcarosello">
       
-      <div class="carousel-item active" data-bs-interval="none">
-      <div id="tavola" class="board " style="width: 100vw; height: 100vh; ">
-      <?php
-                
-                //Connessione postgres
-            
-            $dbconn = pg_connect("host=localhost dbname=WeightChallengeDB
-                port=5432 user=postgres password=postgres");
-
-
-            //verifica dati
-            $query = "select * from animal where utente is null";
-            $result = pg_query($dbconn, $query);
-            $arr = pg_fetch_all($result);
-            foreach($arr as $animal){
-                echo '<div class="cell border border-2 border-warning"  >
-                <img src="'.$animal["foto"].'" id="'.$animal["nome_scientifico"].'" draggable=true ondragstart="drag(event)"
-                ondragover="allowDrop(event)" ondrop="drop(event)" 
-                height="80" width="80"> </div>
-              ';
-            }
-            pg_close($dbconn);
-            
-            ?>
-        </div>
-      </div>
       <div class="carousel-item" data-bs-interval="none">
-        <img src="foto/jungle1.png" class="d-block" style="width: 100vw; height: 100vh; ">
+        <img src="foto/jungle2.jpg" class="d-block" style="width: 100vw; height: 100vh; ">
         
       </div>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev" style="max-width:100px;">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Previous</span>
     </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next" style="max-width:100px;">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
     </button>
@@ -107,13 +85,13 @@
   <nav class="navbar navbar-expand-md justify-content-center fixed-bottom nav2">
     <div class="container">
             <ul class="nav navbar-nav me-auto w-100 justify-content-start p-3">
-              <img id="animal_image_1" src="foto/squirtle.png" alt="img1" style="width: 100px; height: 100px;">
+              <img id="animal_image_1" value="plus" src="foto/icons8-plus-96.png" alt="img1" style="width: 100px; height: 100px;" ondragover="allowDrop(event)" ondrop="drop(event)" >
             </ul>    
             <ul class="navbar-nav w-100 justify-content-center">
-              <button type="button" class="btn btn-primary button1" data-bs-toggle="modal" data-bs-target="#confrontmodal">Confronta!</button>
+              <button type="button" class="btn btn-primary button1" data-bs-toggle="modal" data-bs-target="#confrontmodal" onclick="confronta()" >Confronta!</button>
             </ul>
             <ul class="nav navbar-nav ms-auto w-100 justify-content-end p-3">
-              <img id="animal_image_2" src="foto/pikachu.png" alt="img2" style="width: 100px; height: 100px;">
+              <img id="animal_image_2" value="plus" src="foto/icons8-plus-96.png" alt="img2" style="width: 100px; height: 100px;" ondragover="allowDrop(event)" ondrop="drop(event)" >
             </ul>
         </div>
     </div>
@@ -150,6 +128,8 @@
       </div>
     </div>
   </div>
+
+  
 
 </body>
 </html>

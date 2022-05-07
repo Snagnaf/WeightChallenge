@@ -26,8 +26,8 @@ $id_animal2 = $_GET['id_animal2'];
     <tbody>
     <tr>
     <th scope="row">Foto</th>
-    <td><img src="'.$animal1["foto"].'" height="80px" width="80px"></td>
-    <td><img src="'.$animal2["foto"].'" height="80px" width="80px"></td>
+    <td><img src="data:image/'.$animal1["type"].';base64,'.$animal1["foto"].'" height="80px" width="80px"></td>
+    <td><img src="data:image/'.$animal2["type"].';base64,'.$animal2["foto"].'" height="80px" width="80px"></td>
     </tr>
     <tr>
     <th scope="row">Nome</th>
