@@ -34,7 +34,7 @@
               }
               $arr_habitat[$animal["habitat"]] .= '<div class="cell border border-2 border-warning">
                 <img src="data:'.$animal["type"].';base64,'.$animal["foto"].'" id="'.$animal["nome_scientifico"].'" draggable=true ondragstart="drag(event)"
-                ondragover="allowDrop(event)" 
+                ondragover="allowDrop(event)" ontouchstart="select_animal(event)"
                 height="80" width="80"> 
                 
                 </div>
