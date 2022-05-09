@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesignup.css" type="text/css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <script src="validazione.js" type="application/javascript" ></script>
+    <title>Registrazione</title>
+</head>
+<body>
+    <nav class="navbar justify-content-center fixed-top bg-dark navbar-dark">
+        <div class="container">
+            <a href="index copy.html" class="navbar-brand d-flex w-50 me-auto">ANIMAL SIZE</a>
+            
+           
+                <ul class="nav navbar-nav justify-content-end py-1">
+                    <li class="nav-item">
+                      <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#aboutus">ABOUT US</a>
+                    </li>
+                </ul>
+            
+        </div>
+        
+    </nav>
+    
+    <div class="form">
+        <div class="form-panel one">
+          <div class="form-header">
+            <h1>AnimalSize Registrazione</h1>
+          </div>
+          <div class="form-content">
+            <form name="myForm" action="validateRegistration.php" method="post" class="form-singin"
+            onsubmit="valida()">
+              <div class="form-group">
+                <label for="username">Nome utente</label>
+                <input id="username" type="text" name="inputName" required="required" class="from-control"/>
+              </div>
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input id="password" type="password" name="inputPassword" required="required" class="from-control"/>
+              </div>
+             
+              <div class="form-group">
+                <button type="submit" name="registrationButton">Invia</button>
+              </div>
+            </form>
+          </div>
+        </div>
+    </div>
+      
+</body>
+</html>
