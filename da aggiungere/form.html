@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AggiungiAnimale</title>
+    <link rel="stylesheet" href="styleform.css" type="text/css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+
+    <script>
+        function caricaUser(){
+            document.getElementById("user").value=localStorage.utente;
+        }
+    </script>
+</head>
+<body onload="caricaUser()">
+    
+    <nav class="navbar justify-content-center sticky-top bg-dark navbar-dark">
+        <div class="container">
+            <a href="#home" class="navbar-brand d-flex w-50 me-auto">ANIMAL SIZE</a>
+            
+           
+                <ul class="nav navbar-nav justify-content-end py-1">
+                    <li class="nav-item">
+                      <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#aboutus">ABOUT US</a>
+                    </li>
+                </ul>
+            
+        </div>
+        
+    </nav>
+    
+    <div class="form">
+        <div class="form-panel one">
+          <div class="form-header">
+            <h1>AnimalSize Registrazione</h1>
+          </div>
+          <div class="form-content">
+            <form name="myForm" action="validateRegistration.php" method="post" class="form-singin"
+            onsubmit="valida()">
+              <div class="form-group">
+                <label for="user">Nome utente</label>
+                <input id="user" type="text" name="inputUser" class="nosel" readonly/>
+              </div>
+              
+              <div class="form-group">
+                <label for="inputAnimal">Nome Scientifico</label>
+                <input type="text" name="inputAnimal" class="nosel"/>
+              </div>
+              
+              <div class="form-group">
+                <label for="inputImage">Foto</label>
+                <input type="file" name="inputImage" class="nosel"/>
+              </div>
+              
+              <div class="form-group">
+                <label for="peso">Peso&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                <input type="number" name="inputWeight"/>
+                <select class="form-select" aria-label="peso" name="peso" required>
+                  <option value="kg">kg</option>
+                  <option value="g">g</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="inputSpeed">Velocità&nbsp;&nbsp;&nbsp;</label>
+                <input type="number" name="inputSpeed"/>
+                <select class="form-select" aria-label="speed" name="speed" required>
+                  <option value="m/s">m/s</option>
+                  <option value="f/s">f/s</option>
+                </select>
+                
+              </div>
+
+              <div class="form-group">
+                <label for="inputHeight">Altezza&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                <input type="number" name="inputHeight"/>
+                <select class="form-select" aria-label="altezza" name="altezza" required>
+                  <option value="m">m</option>
+                  <option value="f">feet</option>
+                </select>
+              </div>
+              
+              <div class="form-group">
+                <label for="inputHabitat">Habitat&nbsp;</label>
+                <input type="text" name="inputHabitat" class="nosel"/>
+              </div>
+
+              <div class="form-group">
+                <button type="submit" name="registrationButton">Invia</button>
+              </div>
+            </form>
+          </div>
+        </div>
+    </div>
+
+
+</body>
