@@ -2,6 +2,26 @@
             //Connessione
             $name = $_GET['name_utente'];
 
+
+            //MySQL
+            /*
+            $db_host = "localhost";
+                $db_user = "weightchallenge";
+                $db_name = "my_weightchallenge";
+                $db_password = "hwfWkYSg22VN";
+                $conn = mysqli_connect($db_host, $db_user, $db_password,$db_name);
+                if ($conn == FALSE)
+                die ("Errore nella connessione:".mysqli_connect_error());
+                $query = "select * from animal where utente='".$name."'";
+				        $result = mysqli_query($conn,$query);
+
+				    while ($animal = mysqli_fetch_array($result))
+				    {...}
+
+            */
+
+            //PostrgreSQL
+
             $dbconn = pg_connect("host=localhost dbname=WeightChallengeDB
                 port=5432 user=postgres password=postgres");
 
@@ -33,8 +53,9 @@
                 
               }
               $arr_habitat[$animal["habitat"]] .= '<div class="cell border border-2 border-warning">
-                <img src="data:'.$animal["type"].';base64,'.$animal["foto"].'" id="'.$animal["nome_scientifico"].'" draggable=true ondragstart="drag(event)"
-                ondragover="allowDrop(event)" 
+                <img src="data:'.$animal["type"].';base64,'.$animal["foto"].'" id="'.$animal["nome_scientifico"].'_by_'.$animal["utente"].'" 
+                draggable=true ondragstart="drag(event)"
+                ondragover="allowDrop(event)" ontouchstart="select_animal(event)"
                 height="80" width="80"> 
                 
                 </div>

@@ -4,99 +4,101 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WeightChallenge</title>
-    <link rel="stylesheet" href="../style.css" type="text/css">
+    <title>AggiungiAnimale</title>
+    <link rel="stylesheet" href="styleform.css" type="text/css">
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
 
     <script>
         function caricaUser(){
             document.getElementById("user").value=localStorage.utente;
         }
-        </script>
-
-
-
+    </script>
 </head>
 <body onload="caricaUser()">
-    <div class="header rounded-bottom titolo text-warning">
-        Add a <br> new animal
-        <button class="btn btn-warning" onclick="window.location.href='../index.php'">Back</button>
-    </div>
-    <div style="padding-top:17px;">
-    <div style="width:fit-content;margin:auto">
-    <form method="post" name="new_animal" action="createAnimal.php" enctype="multipart/form-data">
-        <table class="table table-primary table-striped">
-            <!-- 
-            <thead>
-                <tr>
-                <th scope="col"></th>
-                <th scope="col"></th>
-                </tr>
-            </thead>
-            -->
-            <tbody>
-                <tr>
-                    <th scope="row">User</th>
-                    <td ><input type="text" id="user" name="inputUser" size="20" readonly></td>
-                    </tr>
-                <tr>
-                    <th scope="row">Nome Scientifico</th>
-                    <td><input type="text" name="inputAnimal"></td>
-                    </tr>
-            <tr>
-            <th scope="row">Foto</th>
-            <td><input type="file" name="inputImage"></td>
-            </tr>
-            <tr>
-            <th scope="row">Nome</th>
-            <td><input type="text" name="inputName" size="20"></td>
-            </tr>
-            <tr>
-            <th scope="row" >Peso</th>
-            <td>
-                <input type="number" name="inputWeight" size="20">
-                <select cols="20"  name="peso"  size="1" required>
-                    <option value="kg">kg</option>
-                    <option value="g">g</option>
-                </select>  
-            </td>
-            </tr>
-            <tr>
-            <th scope="row" >Velocita</th>
-            <td>
-                <input type="text" name="inputSpeed" size="20">
-                <select cols="20"  name="speed"  size="1" required>
-                    <option value="m/s">m/s</option>
-                    <option value="feet/sec">feet/sec</option>
-                </select>
-            </td>
-            </tr>
-            <tr>
-            <th scope="row">Altezza</th>
-            <td >
-                <input type="text" name="inputHeight" size="20">
-                <select cols="10"  name="altezza"  size="1" required>
-                    <option value="m">m</option>
-                    <option value="feet">feet</option>
-                </select> 
-            </td>
-            </tr>
-            <tr>
-            <th scope="row">Habitat</th>
-            <td ><input type="text" name="inputHabitat" size="20"></td>
-            </tr>
-            <tr>
-                <th scope="row"></th>
-                <td>
-                    <input type="submit" class="btn btn-success" name="submitButton" style="margin:20px;" size="20">
-                </td>
-            </tr>
-            </tbody>
-            </table>
+    
+    <nav class="navbar justify-content-center sticky-top bg-dark navbar-dark">
+        <div class="container">
+            <a href="#home" class="navbar-brand d-flex w-50 me-auto">ANIMAL SIZE</a>
+            
+           
+                <ul class="nav navbar-nav justify-content-end py-1">
+                    <li class="nav-item">
+                      <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#aboutus">ABOUT US</a>
+                    </li>
+                </ul>
+            
+        </div>
+        
+    </nav>
+    
+    <div class="form">
+        <div class="form-panel one">
+          <div class="form-header">
+            <h1>AnimalSize Registrazione</h1>
+          </div>
+          <div class="form-content">
+            <form name="myForm" action="createAnimal.php" method="post" class="form-singin"
+            onsubmit="valida()" enctype="multipart/form-data">
+              <div class="form-group">
+                <label for="user">Nome utente</label>
+                <input id="user" type="text" name="inputUser" class="nosel" readonly/>
+              </div>
+              
+              <div class="form-group">
+                <label for="inputName">Nome</label>
+                <input type="text" name="inputName" class="nosel"/>
+              </div>
 
-    </form>
+              <div class="form-group">
+                <label for="inputAnimal">Nome Scientifico</label>
+                <input type="text" name="inputAnimal" class="nosel"/>
+              </div>
+              
+              <div class="form-group">
+                <label for="inputImage">Foto</label>
+                <input type="file" name="inputImage" class="nosel"/>
+              </div>
+              
+              <div class="form-group">
+                <label for="peso">Peso&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                <input type="number" name="inputWeight" step="any"/>
+                <select class="form-select" aria-label="peso" name="peso" required>
+                  <option value="kg">kg</option>
+                  <option value="g">g</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="inputSpeed">Velocità&nbsp;&nbsp;&nbsp;</label>
+                <input type="number" name="inputSpeed" step="any"/>
+                <select class="form-select" aria-label="speed" name="speed" required>
+                  <option value="m/s">m/s</option>
+                  <option value="f/s">f/s</option>
+                </select>
+                
+              </div>
+
+              <div class="form-group">
+                <label for="inputHeight">Altezza&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                <input type="number" name="inputHeight" step="any"/>
+                <select class="form-select" aria-label="altezza" name="altezza" required>
+                  <option value="m">m</option>
+                  <option value="f">feet</option>
+                </select>
+              </div>
+              
+              <div class="form-group">
+                <label for="inputHabitat">Habitat&nbsp;</label>
+                <input type="text" name="inputHabitat" class="nosel"/>
+              </div>
+
+              <div class="form-group">
+                <button type="submit" name="submitButton">Invia</button>
+              </div>
+            </form>
+          </div>
+        </div>
     </div>
-    </div>
-    <div class="tail"></div>
+
+
 </body>
-</html>

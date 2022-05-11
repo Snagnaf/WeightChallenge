@@ -10,9 +10,9 @@ function inizializzaStorageUtente(){
         + new Animal
       </button>
       <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="user/login/index.html">Log in</a></li>
+        <li><a class="dropdown-item" href="user/login/login.html">Log in</a></li>
         <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="user/registrazione/index.html">New Account</a></li>
+        <li><a class="dropdown-item" href="user/registrazione/registrazione.html">New Account</a></li>
       </ul>
     </div>
     `;
@@ -58,24 +58,12 @@ function select_animal(ev){
   if(counter%2==0){
     document.getElementById("animal_image_2").src=animale.src;
     document.getElementById("animal_image_2").value = animale.id;
+    document.getElementById("animal_image_2").utente = animale.utente;
   }else{
     document.getElementById("animal_image_1").src=animale.src;
     document.getElementById("animal_image_1").value = animale.id;
+    document.getElementById("animal_image_1").utente = animale.utente;
   }
-
-  if(counter>1){
-  var animale1 = document.getElementById("animal_image_1").value;
-  var animale2 = document.getElementById("animal_image_2").value;
-  
-  $.ajax({
-    data: 'id_animal1=' + animale1+'&id_animal2='+animale2,
-    url: 'prova.php',
-    method: 'GET', // or GET
-    success: function(msg) {
-      document.getElementById("sfida").innerHTML=msg;
-
-    }
-   });}
   
 }
 
@@ -91,7 +79,6 @@ function allowDrop(ev) {
 }
 
 function drag(ev) {
-
   ev.dataTransfer.setData("text", ev.target.id);
 }
 
@@ -134,10 +121,19 @@ function confronta(){
   var animale1 = document.getElementById("animal_image_1").value;
   var animale2 = document.getElementById("animal_image_2").value;
 
+  var temp_id=animale1.split("_by_");
+  animale1=temp_id[0];
+  var utente1=temp_id[1];
+
+  var temp_id=animale2.split("_by_");
+  animale2=temp_id[0];
+  var utente2=temp_id[1];
+
+
   if(!(animale1=="plus") && !(animale2=="plus")){
 
     $.ajax({
-      data: 'id_animal1=' + animale1+'&id_animal2='+animale2,
+      data: 'id_animal1=' + animale1+'&utente_animal1='+utente1+'&id_animal2='+animale2+'&utente_animal2='+utente2,
       url: 'prova.php',
       method: 'GET', // or GET
       success: function(msg) {

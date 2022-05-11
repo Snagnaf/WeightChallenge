@@ -4,7 +4,7 @@ html {
 }
 
 body {
-  background-image: url(../../foto/jungle1.jpg);
+  background-image: url(../../foto/jungle2.jpg);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: 100% 100%;
@@ -75,19 +75,11 @@ body {
   text-transform: uppercase;
   cursor: pointer;
   letter-spacing: 0.15em;
+  margin-top: 25px
 }
 
-.form-group .form-remember {
-  font-size: 12px;
-  font-weight: 400;
-  letter-spacing: 0;
-  text-transform: none;
-}
-.form-group .form-remember input[type=checkbox] {
-  display: inline-block;
-  width: auto;
-  margin: 15px 8px 0 0;
-}
+
+
 
 .form-panel {
   padding: 60px 65px 60px 60px;
@@ -103,8 +95,4 @@ body {
   font-size: 40px;
   font-weight: 700;
   
-}
-
-#rmb{
-  accent-color:rgba(0, 69, 22);
 }

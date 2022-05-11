@@ -88,7 +88,7 @@
               <img id="animal_image_1" value="plus" src="foto/icons8-plus-96.png" alt="img1" style="width: 100px; height: 100px;" ondragover="allowDrop(event)" ondrop="drop(event)" >
             </ul>    
             <ul class="navbar-nav w-100 justify-content-center">
-              <button type="button" class="btn btn-primary button1" data-bs-toggle="modal" data-bs-target="#confrontmodal" onclick="confronta()" >Confronta!</button>
+              <button type="button" class="btn btn-primary button1"  data-bs-toggle="modal" data-bs-target="#confrontmodal" onclick="confronta()" >Confronta!</button>
             </ul>
             <ul class="nav navbar-nav ms-auto w-100 justify-content-end p-3">
               <img id="animal_image_2" value="plus" src="foto/icons8-plus-96.png" alt="img2" style="width: 100px; height: 100px;" ondragover="allowDrop(event)" ondrop="drop(event)" >

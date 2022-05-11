@@ -5,6 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="reboundgen.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
     <style>
         * {
   box-sizing: border-box;
@@ -27,58 +31,25 @@
   height: 95px;
   width: 95px;
 }
+.scontro{
+  background-color: #00ff0033;
+  height:200px;
+  width:80vw;
+}
+.yourdiv{
+  height:90px;
+  width:90px;
+  background-color: orange;
+  animation-iteration-count: infinite;
+}
+
 
     </style>
     <script>
-
-let moving = null;
-
-function pickup(event) {
-  moving = event.target;
-console.log(moving.clientHeight);
-  moving.style.height = moving.clientHeight;
-  moving.style.width = moving.clientWidth;
-  moving.style.position = 'fixed';
-}
-function move(event) {
-  if (moving) {
-      if (event.clientX) {
-          // mousemove
-          moving.style.left = event.clientX - moving.clientWidth/2;
-          moving.style.top = event.clientY - moving.clientHeight/2;
-      } else {
-          // touchmove - assuming a single touchpoint
-          moving.style.left = event.changedTouches[0].clientX - moving.clientWidth/2;
-          moving.style.top = event.changedTouches[0].clientY - moving.clientHeight/2;
-      }
-  }
-}
-
-
-  
-
-function init() {
-    document.getElementById("movable-element").addEventListener("touchstart", touchHandler, true);
-    document.getElementById("movable-element").addEventListener("touchmove", touchHandler, true);
-    document.getElementById("movable-element").addEventListener("touchend", touchHandler, true);
-    document.getElementById("movable-element").addEventListener("touchcancel", touchHandler, true);
-}
-
-function drag(event){
-
-  console.log("dragstart");
-}
-function drop(event){
-
-}
-function allowDrop(event){
-
-}
-
-
+      
     </script>
 </head>
-<body onload="init()">
+<body>
     <div id="container" >
         <div id="left-parent" >
             <div id="movable-element" draggable=true ondragstart="drag(event)"
@@ -86,6 +57,25 @@ function allowDrop(event){
         </div>
 
         <div id="right-parent" ></div>
+        
     </div>
+    <div class="scontro">
+      <marquee  behavior="alternate" scrollamount="10" height="100%" width="100%" direction="left" scrolldelay="0">
+      <marquee  behavior="alternate" scrollamount="10" height="100%" width="100%" direction="down"scrolldelay="0">
+        <img src="//www.html.am/images/html-codes/marquees/bee.gif" width="72" height="79" alt="Buzzy bee">
+      </marquee>
+    </marquee>
+      <div id="left-animal" >
+        
+      </div>
+
+      <div id="right-animal" ></div>
+  </div>
+  <div class="scontro">
+    <div class="yourdiv bounceInRight"></div>
+  </div>
+  <button id="animate" class="btn btn-primary" onclick="myFunction()">animate</button>
+ 
+
 </body>
 </html>

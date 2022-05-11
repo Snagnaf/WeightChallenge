@@ -2,6 +2,18 @@
     $id_animal1 = $_GET['id_animal1'];
     $id_animal2 = $_GET['id_animal2'];
 
+    //Connessione MySQL
+    /*
+    $db_host = "localhost";
+    $db_user = "weightchallenge";
+    $db_name = "my_weightchallenge";
+    $db_password = "hwfWkYSg22VN";
+    $dbconn = mysqli_connect($db_host, $db_user, $db_password,$db_name);
+    if ($dbconn == FALSE)
+    die ("Errore nella connessione:".mysqli_connect_error());
+    */
+
+
     $dbconn = pg_connect("host=localhost dbname=WeightChallengeDB
     port=5432 user=postgres password=postgres");
 
