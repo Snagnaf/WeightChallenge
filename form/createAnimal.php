@@ -82,15 +82,28 @@
             
             $name = $_POST["inputName"];
 
-            //file su database
+            //file su database come stringa
             
             $img=file_get_contents($_FILES['inputImage']['tmp_name']);
             $img_data = base64_encode($img);
             $type=$_FILES['inputImage']['type'];
 
+            //caricamento dati e conversione
+
             $weight = $_POST["inputWeight"];
+            if($_POST["peso_unit"]=="pound"){
+                $weight*= 0.453592;
+            }
             $speed = $_POST["inputSpeed"];
+            if($_POST["speed_unit"]=="m/h"){
+                $speed*= 1.60934;
+            }
             $height = $_POST["inputHeight"];
+            if($_POST["altezza_unit"]=="feet"){
+                $height*= 0.3048;
+            }
+
+
             $habitat = $_POST["inputHabitat"];
             $query2 = 'insert into animal values ($1,$2,$3,$4,$5,$6,$7,$8,$9)';
             $result = pg_query_params($dbconn, $query2, array($animal, $img_data, $name, $weight, $speed, $height, $user, $habitat, $type));

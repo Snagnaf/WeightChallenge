@@ -28,6 +28,8 @@ $utente_animal2 = $_GET['utente_animal2'];
     $result2 = pg_query($dbconn, $query2);
     $animal2 = pg_fetch_array($result2);
 
+    
+
     $tabella = '<table class="container-fluid justify-content-center">
     <thead>
     <tr>
@@ -52,36 +54,36 @@ $utente_animal2 = $_GET['utente_animal2'];
 
     if($animal1["peso"]>$animal2["peso"]){
         $tabella .= 
-        '<td class="greater">'.$animal1["peso"].'</td>
-        <td class="smaller">'.$animal2["peso"].'</td>';
+        '<td class="greater">'.$animal1["peso"].'kg <br>( '.($animal1["peso"]*2.20462).' pounds'.'</td>
+        <td class="smaller">'.$animal2["peso"].'kg <br>( '.($animal2["peso"]*2.20462).' pounds'.'</td>';
     } else {
         $tabella .= 
-        '<td class="smaller">'.$animal1["peso"].'</td>
-        <td class="greater">'.$animal2["peso"].'</td>';
+        '<td class="smaller">'.$animal1["peso"].'kg <br> '.($animal1["peso"]*2.20462).' pounds'.'</td>
+        <td class="greater">'.$animal2["peso"].'kg <br>( '.($animal2["peso"]*2.20462).' pounds'.'</td>';
     }
     $tabella .= '</tr>
     <tr>
     <th scope="row" >Velocita</th>';
     if($animal1["velocita"]>$animal2["velocita"]){
         $tabella .= 
-        '<td class="greater">'.$animal1["velocita"].'</td>
-        <td class="smaller">'.$animal2["velocita"].'</td>';
+        '<td class="greater">'.$animal1["velocita"].'k/h <br> '.($animal1["velocita"]*0.621371).' m/h'.'</td>
+        <td class="smaller">'.$animal2["velocita"].'k/h <br> '.($animal2["velocita"]*0.621371).' m/h'.'</td>';
     } else {
         $tabella .= 
-        '<td class="smaller">'.$animal1["velocita"].'</td>
-        <td class="greater">'.$animal2["velocita"].'</td>';
+        '<td class="smaller">'.$animal1["velocita"].'k/h <br> '.($animal1["velocita"]*0.621371).' m/h'.'</td>
+        <td class="greater">'.$animal2["velocita"].'k/h <br> '.($animal2["velocita"]*0.621371).' m/h'.'</td>';
     }
     $tabella .= '</tr>
     <tr>
     <th scope="row" >Altezza</th>';
     if($animal1["altezza"]>$animal2["altezza"]){
         $tabella .= 
-        '<td class="greater">'.$animal1["altezza"].'</td>
-        <td class="smaller">'.$animal2["altezza"].'</td>';
+        '<td class="greater">'.$animal1["altezza"].'m <br> '.($animal1["altezza"]*3.28084).' feet'.'</td>
+        <td class="smaller">'.$animal2["altezza"].'m <br> '.($animal2["altezza"]*3.28084).' feet'.'</td>';
     } else {
         $tabella .= 
-        '<td class="smaller">'.$animal1["altezza"].'</td>
-        <td class="greater">'.$animal2["altezza"].'</td>';
+        '<td class="smaller">'.$animal1["altezza"].'m <br> '.($animal1["altezza"]*3.28084).' feet'.'</td>
+        <td class="greater">'.$animal2["altezza"].'m <br> '.($animal2["altezza"]*3.28084).' feet'.'</td>';
     }
     $tabella .= '</tr>
     <tr>

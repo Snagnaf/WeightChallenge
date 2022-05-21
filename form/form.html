@@ -34,7 +34,7 @@
     <div class="form">
         <div class="form-panel one">
           <div class="form-header">
-            <h1>AnimalSize Registrazione</h1>
+            <h1>Crea il tuo animale!</h1>
           </div>
           <div class="form-content">
             <form name="myForm" action="createAnimal.php" method="post" class="form-singin"
@@ -62,18 +62,18 @@
               <div class="form-group">
                 <label for="peso">Peso&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                 <input type="number" name="inputWeight" step="any"/>
-                <select class="form-select" aria-label="peso" name="peso" required>
+                <select class="form-select" aria-label="peso" name="peso_unit" required>
                   <option value="kg">kg</option>
-                  <option value="g">g</option>
+                  <option value="pound">pound</option>
                 </select>
               </div>
 
               <div class="form-group">
                 <label for="inputSpeed">Velocità&nbsp;&nbsp;&nbsp;</label>
                 <input type="number" name="inputSpeed" step="any"/>
-                <select class="form-select" aria-label="speed" name="speed" required>
-                  <option value="m/s">m/s</option>
-                  <option value="f/s">f/s</option>
+                <select class="form-select" aria-label="speed" name="speed_unit" required>
+                  <option value="k/h">k/h</option>
+                  <option value="m/h">m/h</option>
                 </select>
                 
               </div>
@@ -81,9 +81,9 @@
               <div class="form-group">
                 <label for="inputHeight">Altezza&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                 <input type="number" name="inputHeight" step="any"/>
-                <select class="form-select" aria-label="altezza" name="altezza" required>
+                <select class="form-select" aria-label="altezza" name="altezza_unit" required>
                   <option value="m">m</option>
-                  <option value="f">feet</option>
+                  <option value="feet">feet</option>
                 </select>
               </div>
               
