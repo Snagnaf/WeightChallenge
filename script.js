@@ -145,21 +145,45 @@ function confronta(){
 
 
 //Search
-function search(){
-    var animal = document.getElementById("search_text").value;
-    var picture = document.getElementById(animal); 
-    if(picture!=null){
-      var cell = picture.parentElement;
-      cell.classList.add("blink-bg");
-      cell.scrollIntoView();
-      
-      setTimeout(function(){
-        cell.className = "cell border border-2 border-warning";
-    }, 2000);
-    }
-}
+const delay = millis => new Promise((resolve, reject) => {
+  setTimeout(_ => resolve(), millis)
+});
 
-//animazione div
+async function search(){
+  var animal = document.getElementById("search-text").value;
+  if(animal=="") return;
+  var habitat = null;
+  var cell = null;
+  $("*").each(function() { 
+    if (this.id) {
+      var temp_id = this.id.toLowerCase();
+      if(temp_id.match(animal.toLowerCase())){
+        habitat= this.parentElement.parentElement.id;
+        console.log(habitat);
+        var picture = document.getElementById(this.id); 
+        cell = picture.parentElement;
+      }
+      return;
+    }
+  });
+  if(habitat==null) {
+    alert("Nessuna corrispondenza!");
+    return;
+  }
+    //Carousel moving  
+  var carousel = $("div.carousel-item.active").children()[0].id;
+  while(habitat!=carousel){
+    $('.carousel').carousel("next"); 
+    await delay(1000);
+    carousel = $("div.carousel-item.active").children()[0].id;
+  }
+
+    //Blinking background
+  cell.classList.add("blink-bg");
+  setTimeout(function(){
+    cell.className = "cell border border-2 border-warning";
+  }, 2000);
+}
   
 
 

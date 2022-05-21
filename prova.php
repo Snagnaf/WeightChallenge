@@ -4,8 +4,6 @@ $id_animal1 = $_GET['id_animal1'];
 $id_animal2 = $_GET['id_animal2'];
 $utente_animal1 = $_GET['utente_animal1'];
 $utente_animal2 = $_GET['utente_animal2'];
-echo $utente_animal1;
-echo $utente_animal2;
 
 //Connessione MySQL
 /*
@@ -14,7 +12,7 @@ echo $utente_animal2;
     $db_name = "my_weightchallenge";
     $db_password = "hwfWkYSg22VN";
     $dbconn = mysqli_connect($db_host, $db_user, $db_password,$db_name);
-    if ($dbconn == FALSE)
+    if ($dbconn == FALSE)   
     die ("Errore nella connessione:".mysqli_connect_error());
 */
 
