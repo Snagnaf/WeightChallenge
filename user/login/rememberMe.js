@@ -1,10 +1,20 @@
-var ricordami = false;
-function valida(){
-    if(document.getElementById("rmb").checked){
-        ricordami = true;
 
+function inizializza(){
+    sessionStorage.setItem("ricordami", true);
+}
+
+function valida(){
+    if(!document.getElementById("rmb").checked){
+        sessionStorage.ricordami = false;
+        alert(sessionStorage.ricordami);
     }
 }
-function effettuata(nome){
-    if(ricordami) {localStorage.utente=nome;console.log("ok");}
+function effettuata(){
+    sessionStorage.utente=document.getElementById('nome').innerText;
+    if(sessionStorage.ricordami==true) {
+        alert(sessionStorage.ricordami);
+        localStorage.utente=document.getElementById('nome').innerText;
+    }
+    sessionStorage.removeItem("ricordami");
+    
 }

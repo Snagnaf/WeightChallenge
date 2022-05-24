@@ -9,13 +9,7 @@ li, a, button{
 }
 
 
-/*body{
-    background-image:url(img/jungle2.jpg);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: 100% 100%;
-}
-*/
+
 p{
     color: white;
     font-family: 'Open Sans', sans-serif;
@@ -24,7 +18,7 @@ p{
 .modal-body p{
     color: black;
 }
-/*https://jsfiddle.net/dux0xd3o/  */
+
 
 .carousel-control-prev-icon {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E") !important;
@@ -37,22 +31,52 @@ p{
 }
 
 .navbar img {
-    height: 90px;
-    width: 90px;
-    border: 2px solid rgb(0, 0, 0);
+    height: 100px;
+    width: 100px;
+    border: 2px solid rgba(0, 69, 22);
     background: white;
+    border-radius: 4px;
+    margin: 0 20px 30px;
 }
 
 
 .button1{
-    font-size: 28px !important;
-    
+    outline: none;
+    background: rgba(0, 69, 22);
+    width: 70%;
+    border: 0;
+    border-radius: 4px;
+    padding: 12px 20px;
+    color: #FFFFFF;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: 500;
+    line-height: inherit;
+    text-transform: uppercase;
+    cursor: pointer;
+    letter-spacing: 0.15em; 
+}
+
+.modal-body table th{
+    width: 100%;
+    text-align: center;
+    color: rgba(0, 69, 22);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+}
+
+h5{
+    letter-spacing: 0.15em;
+    color: rgba(0, 69, 22);
+    font-weight: 700 !important;
+    font-size: xx-large !important;
+
 }
 
 .modal-body table td{
-    border: 2px solid black;
+    
+    color: rgba(0, 69, 22);
 }
-
 
 .nav2{
     background: rgb(226,226,226);
@@ -62,17 +86,78 @@ p{
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#e2e2e2",endColorstr="#ffffff",GradientType=1);
 }
 
-.navbar{
-    min-height: 65px;
+
+
+
+.wrapper-img{
+    width: 100vw;
+    height: 100vh;
+}
+.wrapper-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
-@media (min-width: 768px) {
-   
+
+
+table tr td p, table tr td img{
+    padding: 0 80px;
+    margin: 0;
+
 }
 
 
 
+button.button1{
+    width: 200px;
+    padding: auto;
+}
 
+
+.addbutt{
+    margin-left: 10px;
+}
+
+
+
+@media (max-width: 768px) {
+    .addbutt {
+        margin: 10px 0;
+        width: 50%;
+    }
+    #collapsingNavbar3 {
+        margin-top: 20px;
+    }
+
+
+
+}
+@media (max-width: 576px){
+    button.button1 {
+        width: 140px;
+        font-size: 14px;
+        padding: 10px 0;
+    }
+
+    .navbar img{
+        height: 75px;
+        width: 75px;
+        margin: 10px 10px;
+    }
+
+
+    table tr td p, table tr td img{
+        padding: 0 20px;
+        margin: 0;
+    
+    }
+
+
+}
+
+
+/*old part*/
 .header{
     background-image: linear-gradient(rgb(133, 142, 214), rgb(161, 86, 161));
     
@@ -84,26 +169,6 @@ p{
 .titolo{
     font: bold 50px "Courier New";
 }
-.center{
-    height: 90vh;
-    overflow-x: scroll;
-    justify-content: center;
-}
-.center::-webkit-scrollbar {
-    width: 15px;
-  }
-  
-  /* Track */
-.center::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px rgb(255, 211, 160);
-    border-radius: 10px;
-  }
-  
-  /* Handle */
-.center::-webkit-scrollbar-thumb {
-    background: rgb(44, 78, 231);
-    border-radius: 10px;
-  }
 
 .tail{
     text-align: center;
@@ -113,9 +178,10 @@ p{
     overflow-y: visible;
 }
 .board{
-    background: url("foto/jungle1.jpg");
+    background: url("img/jungle.jpg");
     background-size: cover;
-    
+    height:100vh;
+    width: 100vw;
     display: flex;
     flex-direction: row;
     flex-flow:wrap;
@@ -132,11 +198,13 @@ p{
     padding: 5px;
     background-color: rgb(255, 241, 255);
     transition: background-color .5s;
-    
     flex: 0 0 95px;
+    border-radius: 20px;
+    
 }
 .cell:hover{
     background-color: rgb(255, 211, 160);
+    
 }
  
 .challenge{
@@ -155,8 +223,11 @@ p{
 }
 
 .blink-bg{
-    animation: blinkingBackground 2s ;
+    animation: pulsate 1s ease-out;
+    animation-iteration-count: infinite; 
+    background-color: #9A2727;
 }
+
 
 @keyframes blinkingBackground{
     0%		{ background-color: #ef0a1a;}
@@ -178,3 +249,77 @@ p{
     75%		{ background-color: rgb(255, 241, 255)}
     100%	        { background-color: green;}
 }
+
+
+
+
+/* Make the element pulse (grow large and small slowly) */
+/* Usage
+    .myElement {
+        animation: pulsate 1s ease-out;
+        animation-iteration-count: infinite;
+        opacity: 1; 
+    }
+*/
+@keyframes pulsate {
+    25% {-webkit-transform: scale(0.9, 0.9); opacity: 1.0;}
+    50% {opacity: 1.0;}
+    75% {-webkit-transform: scale(1.1, 1.1); opacity: 1.0;}
+    100% {opacity: 1.0;}
+}
+
+/* Make the element's opacity pulse*/
+/* Usage
+    .myElement {
+        animation: opacityPulse 1s ease-out;
+        animation-iteration-count: infinite;
+        opacity: 0; 
+    }
+*/
+@keyframes opacityPulse {
+    0% {opacity: 0.0;}
+    50% {opacity: 1.0;}
+    100% {opacity: 0.0;}
+}
+
+/* Make the element's background pulse. I call this alertPulse because it is red. You can call it something more generic. */
+/* Usage
+    .myElement {
+        animation: alertPulse 1s ease-out;
+        animation-iteration-count: infinite;
+        opacity: 1; 
+    }
+*/
+@keyframes alertPulse {
+    0% {opacity: #9A2727; opacity: 1;}
+    50% {opacity: red; opacity: 0.9; }
+    100% {opacity: #9A2727; opacity: 1;}
+}
+
+
+/* Make the element rotate infinitely. */
+/* 
+Usage
+    .myElement {
+        animation: rotating 3s linear infinite;
+    }
+*/
+@keyframes rotating {
+  from {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+
+

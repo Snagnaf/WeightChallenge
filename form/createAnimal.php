@@ -1,15 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="styleform.css" type="text/css">
+    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.css">
+    <script src="bootstrap/js/bootstrap.js" type="application/javascript" ></script>
+    <title>Response</title>
 </head>
 <body>
+    <nav class="navbar justify-content-center fixed-top bg-dark navbar-dark">
+        <div class="container">
+            <a href="../index.html" class="navbar-brand d-flex w-50 me-auto">ANIMAL SIZE</a>
+            
+           
+                <ul class="nav navbar-nav justify-content-end py-1">
+                    <li class="nav-item">
+                      <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#aboutus">ABOUT US</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+      </nav>
+    
+
+      <div class="modal fade" id="aboutus" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+          <div class="modal-content">
+             <div class="modal-header">
+               <h5 class="modal-title" id="staticBackdropLabel">CHI SIAMO</h5>
+               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+             </div>
+             <div class="modal-body">
+               <p>Ciao! Siamo Eugenio e Matteo, studenti rispettivamente di Ingegneria Informatica ed Informatica. Questo è il nostro progetto per l'esame di LTW!</p>
+             </div>
+             <div class="modal-footer">
+               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+             </div>
+          </div>
+        </div>
+      </div>
 
 
-<?php
+
+    <div class="form">
+        <div class="form-panel one">
+          <div class="form-header">
+            <h1>AnimalSize</h1>
+          </div>
+          <div class="form-content">
+          <?php
     if(!isset($_POST["submitButton"])){
         header("Location: .."); //header della connessione http
     }else{
@@ -109,17 +151,25 @@
             $result = pg_query_params($dbconn, $query2, array($animal, $img_data, $name, $weight, $speed, $height, $user, $habitat, $type));
             if(!$tuple=pg_fetch_array($result, null, PGSQL_ASSOC)){
                 echo "<h2>Inserimento andato a buon fine</h2><br>";
-                echo "Vai <a href='../index.php'> qui</a> per continuare!";
+                echo "Vai <a href='../index.html'> qui</a> per continuare!";
             }else{
                 echo"<h1 >ERROOREEEEE</h1>";
-                echo "riprova <a href='form.php'> qui</a>!";
+                echo "riprova <a href='form.html'> qui</a>!";
             }
             pg_close($dbconn);
         }
     }
 
 ?>
-
-    
+          </div>
+        </div>
+        <div class="form-group">
+          <button type="button" class="backbutt" onclick="document.location='index.html'">TORNA ALLA HOME</button>
+        </div>
+      </div>
+      
 </body>
 </html>
+
+
+

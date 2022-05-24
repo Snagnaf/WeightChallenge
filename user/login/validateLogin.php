@@ -1,14 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylelogin.css" type="text/css">
+    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.css">
+    <script src="../../bootstrap/js/bootstrap.js" type="application/javascript" ></script>
     <script src="rememberMe.js" type="application/javascript" ></script>
-    <title>validateLogin</title>
+    <title>Response</title>
 </head>
-<body>
-    <?
+<body onload="effettuata()">
+    <nav class="navbar justify-content-center fixed-top bg-dark navbar-dark">
+        <div class="container">
+            <a href="../../index.html" class="navbar-brand d-flex w-50 me-auto">ANIMAL SIZE</a>
+            
+           
+                <ul class="nav navbar-nav justify-content-end py-1">
+                    <li class="nav-item">
+                      <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#aboutus">ABOUT US</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+      </nav>
+    
+
+      <div class="modal fade" id="aboutus" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+          <div class="modal-content">
+             <div class="modal-header">
+               <h5 class="modal-title" id="staticBackdropLabel">CHI SIAMO</h5>
+               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+             </div>
+             <div class="modal-body">
+               <p>Ciao! Siamo Eugenio e Matteo, studenti rispettivamente di Ingegneria Informatica ed Informatica. Questo è il nostro progetto per l'esame di LTW!</p>
+             </div>
+             <div class="modal-footer">
+               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+             </div>
+          </div>
+        </div>
+      </div>
+
+
+
+    <div class="form">
+        <div class="form-panel one">
+          <div class="form-header">
+            <h1>AnimalSize</h1>
+          </div>
+          <div class="form-content">
+          <?
         if(!isset($_POST["loginButton"])){
             header("Location: ..");
         }else{
@@ -39,7 +83,6 @@
                     $name = $tuple2['name'];
                     echo "Bentornato <h3 id='nome'>".$name."</h3>";
                     echo "<h2>il login andato a essere buona fine</h2>";
-                    echo "clicca <a href='../../index.php'> qui</a> per accedere al sito ";
                 }else{
                     echo "<h1>Errorrrreeeeeeeeeee</h1><h3 id='nome'></h3>";
                     echo "riprova <a href='index.html'> qui</a>!";
@@ -64,18 +107,21 @@
                 if($tuple=pg_fetch_array($result, null, PGSQL_ASSOC)){
                     $name = $tuple['name'];
                     echo "Bentornato <h3 id='nome' >$name</h3>";
-                    echo "<h2>il login andato a essere buona fine</h2>";
-                    echo "clicca <a href='../../index.php' > qui</a> per accedere al sito ";
+                    echo "il login andato a essere buona fine";
                 }else{
-                    echo "<h1>Errorrrreeeeeeeeeee</h1><h3 id='nome'></h3>";
+                    echo "<h1>Errorrrreee</h1><h3 id='nome'></h3>";
                     echo "riprova <a href='login.html'> qui</a>!";
                 }
             }
 
         }
     ?>
-    <script>
-        localStorage.utente=document.getElementById('nome').innerText;
-    </script>
+          </div>
+        </div>
+        <div class="form-group">
+          <button type="button" class="backbutt" onclick="document.location='../../index.html'" >TORNA ALLA HOME</button>
+        </div>
+      </div>
+      
 </body>
 </html>

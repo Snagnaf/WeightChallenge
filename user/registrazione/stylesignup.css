@@ -4,10 +4,9 @@ html {
 }
 
 body {
-  background-image: url(../../foto/jungle2.jpg);
+  background-image: url(../../img/jungle2.jpg);
   background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: 100% 100%;
+  background-size: cover;
 
 }
 
@@ -95,4 +94,16 @@ body {
   font-size: 40px;
   font-weight: 700;
   
+}
+
+@media (max-width: 610px) {
+
+  .form {
+    width: auto;
+    margin: 160px 0;
+  }
+
+  .form-panel {
+    padding: 20px 50px;
+  }
 }
