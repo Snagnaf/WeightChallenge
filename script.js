@@ -127,11 +127,9 @@ function select(){
   target = this.children[0];
   if(!choosing) return;
     choosing=false;
-    console.log(target);
     var box = $("img.blink-bg")[0];
     
     box.src=target.src;
-    console.log(box);
     $(box).removeClass("blink-bg");
     $(".cell").each(function(){
       $(this).removeClass("blink-bg");
@@ -211,16 +209,15 @@ async function search(){
   if(animal=="") return;
   var habitat = null;
   var cell = null;
-  $("*").each(function() { 
-    if (this.id) {
-      var temp_id = this.id.toLowerCase();
-      if(temp_id.match(animal.toLowerCase())){
-        habitat= this.parentElement.parentElement.id;
-        var picture = document.getElementById(this.id); 
-        cell = picture.parentElement;
-      }
-      return;
+  $(".cell").each(function() { 
+    var img = $(this).children()[0];
+    var temp_id = img.id.toLowerCase();
+    if(temp_id.match(animal.toLowerCase())){
+      habitat= this.parentElement.id;
+      var picture = document.getElementById(img.id); 
+      cell = picture.parentElement;
     }
+    return;
   });
   if(habitat==null) {
     alert("Nessuna corrispondenza!");
@@ -229,6 +226,7 @@ async function search(){
     //Carousel moving  
   var carousel = $("div.carousel-item.active").children()[0].id;
   while(habitat!=carousel){
+    
     $('.carousel').carousel("next"); 
     await delay(1000);
     carousel = $("div.carousel-item.active").children()[0].id;
