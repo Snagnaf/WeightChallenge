@@ -30,159 +30,86 @@ $utente_animal2 = $_GET['utente_animal2'];
 
 
     $tabella = '
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                  <th class="d-flex justify-content-between">
-                        <p>'.$animal1["nome"].'</p>
-                        <p>'.$animal2["nome"].'</p>
-                  </th>
-                </tr>
-              </thead>
-              <thead>
-                <tr>
-                  <th>Foto</th>
-                </tr>
-              </thead>
-              <tr>
-                <td class="d-flex justify-content-between">
-                    <img src="data:image/'.$animal1["type"].';base64,'.$animal1["foto"].'" height="80px" width="80px">
-                    <img src="data:image/'.$animal2["type"].';base64,'.$animal2["foto"].'" height="80px" width="80px">
-                </td>
-              </tr>
-              
-              <thead>
-                <tr>
-                  <th>Nome scientifico</th>
-                </tr>
-              </thead>
-              <tr>
-                <td class="d-flex justify-content-between">
-                  <p>'.$animal1["nome_scientifico"].'</p>
-                  <p>'.$animal2["nome_scientifico"].'</p>
-                </td>
-              </tr>
-              <thead>
-                <tr>
-                  <th>Peso</th>
-                </tr>
-              </thead>  
-                <tr>
-                  <td class="d-flex justify-content-between">
-                    <p>'.$animal1["peso"].' kg <br> '.($animal1["peso"]*2.20462).' pounds'.'</p>
-                    <p>'.$animal2["peso"].' kg <br>('.($animal2["peso"]*2.20462).' pounds'.'</p>
-                  </td>
-                </tr>
-                <thead>
-                  <tr>
-                    <th>Velocità</th>
-                  </tr>
-                </thead>
-                <tr>
-                  <td class="d-flex justify-content-between">
-                    <p>'.$animal1["velocita"].' k/h <br> '.($animal1["velocita"]*0.621371).' m/h'.'</p>
-                    <p>'.$animal2["velocita"].' k/h <br> '.($animal2["velocita"]*0.621371).' m/h'.'</p>
-                  </td>
-                </tr>
-                <thead>
-                  <tr>
-                    <th>Altezza</th>
-                  </tr>
-                </thead>
-                <tr>
-                  <td class="d-flex justify-content-between">
-                    <p>'.$animal1["altezza"].' m <br> '.($animal1["altezza"]*3.28084).' feet'.'</p>
-                    <p>'.$animal2["altezza"].' m <br> '.($animal2["altezza"]*3.28084).' feet'.'</p>
-                  </td>
-                </tr>
-                <thead>
-                  <tr>
-                    <th>Habitat</th>
-                  </tr>
-                </thead>
-                <tr>
-                  <td class="d-flex justify-content-between">
-                    <p>'.$animal1["habitat"].'</p>
-                    <p>'.$animal2["habitat"].'</p>
-                  </td>
-                </tr>
-              </table>
-          </div>
-        </div>
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th class="d-flex justify-content-between">
+                <p>'.$animal1["nome"].'</p>
+                <p>'.$animal2["nome"].'</p>
+          </th>
+        </tr>
+      </thead>
+      <thead>
+        <tr>
+          <th>Foto</th>
+        </tr>
+      </thead>
+      <tr>
+        <td class="d-flex justify-content-between">
+            <img src="data:image/'.$animal1["type"].';base64,'.$animal1["foto"].'" height="80px" width="80px">
+            <img src="data:image/'.$animal2["type"].';base64,'.$animal2["foto"].'" height="80px" width="80px">
+        </td>
+      </tr>
+      
+      <thead>
+        <tr>
+          <th>Nome scientifico</th>
+        </tr>
+      </thead>
+      <tr>
+        <td class="d-flex justify-content-between">
+          <p>'.$animal1["nome_scientifico"].'</p>
+          <p>'.$animal2["nome_scientifico"].'</p>
+        </td>
+      </tr>
+      <thead>
+        <tr>
+          <th>Peso</th>
+        </tr>
+      </thead>  
+        <tr>
+          <td class="d-flex justify-content-between">
+            <p>'.$animal1["peso"].' kg <br> '.($animal1["peso"]*2.20462).' pounds'.'</p>
+            <p>'.$animal2["peso"].' kg <br> '.($animal2["peso"]*2.20462).' pounds'.'</p>
+          </td>
+        </tr>
+        <thead>
+          <tr>
+            <th>Velocità</th>
+          </tr>
+        </thead>
+        <tr>
+          <td class="d-flex justify-content-between">
+            <p>'.$animal1["velocita"].' k/h <br> '.($animal1["velocita"]*0.621371).' m/h'.'</p>
+            <p>'.$animal2["velocita"].' k/h <br> '.($animal2["velocita"]*0.621371).' m/h'.'</p>
+          </td>
+        </tr>
+        <thead>
+          <tr>
+            <th>Altezza</th>
+          </tr>
+        </thead>
+        <tr>
+          <td class="d-flex justify-content-between">
+            <p>'.$animal1["altezza"].' m <br> '.($animal1["altezza"]*3.28084).' feet'.'</p>
+            <p>'.$animal2["altezza"].' m <br> '.($animal2["altezza"]*3.28084).' feet'.'</p>
+          </td>
+        </tr>
+        <thead>
+          <tr>
+            <th>Habitat</th>
+          </tr>
+        </thead>
+        <tr>
+          <td class="d-flex justify-content-between">
+            <p>'.$animal1["habitat"].'</p>
+            <p>'.$animal2["habitat"].'</p>
+          </td>
+        </tr>
+      </table>
              
     ';
-    
-/*
-    $tabella = '
-    
-    <table class="container-fluid justify-content-center">
-    <thead>
-    <tr>
-    <th scope="col">#</th>
-    <th scope="col">'.$animal1["nome"].'</th>
-    <th scope="col">'.$animal2["nome"].'</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-    <th scope="row">Foto</th>
-    <td><img src="data:image/'.$animal1["type"].';base64,'.$animal1["foto"].'" height="80px" width="80px"></td>
-    <td><img src="data:image/'.$animal2["type"].';base64,'.$animal2["foto"].'" height="80px" width="80px"></td>
-    </tr>
-    <tr>
-    <th scope="row">Nome</th>
-    <td>'.$animal1["nome_scientifico"].'</td>
-    <td>'.$animal2["nome_scientifico"].'</td>
-    </tr>
-    <tr>
-    <th scope="row" >Peso</th>';
-
-    if($animal1["peso"]>$animal2["peso"]){
-        $tabella .= 
-        '<td class="greater">'.$animal1["peso"].'kg <br>( '.($animal1["peso"]*2.20462).' pounds'.'</td>
-        <td class="smaller">'.$animal2["peso"].'kg <br>( '.($animal2["peso"]*2.20462).' pounds'.'</td>';
-    } else {
-        $tabella .= 
-        '<td class="smaller">'.$animal1["peso"].'kg <br> '.($animal1["peso"]*2.20462).' pounds'.'</td>
-        <td class="greater">'.$animal2["peso"].'kg <br>( '.($animal2["peso"]*2.20462).' pounds'.'</td>';
-    }
-    $tabella .= '</tr>
-    <tr>
-    <th scope="row" >Velocita</th>';
-    if($animal1["velocita"]>$animal2["velocita"]){
-        $tabella .= 
-        '<td class="greater">'.$animal1["velocita"].'k/h <br> '.($animal1["velocita"]*0.621371).' m/h'.'</td>
-        <td class="smaller">'.$animal2["velocita"].'k/h <br> '.($animal2["velocita"]*0.621371).' m/h'.'</td>';
-    } else {
-        $tabella .= 
-        '<td class="smaller">'.$animal1["velocita"].'k/h <br> '.($animal1["velocita"]*0.621371).' m/h'.'</td>
-        <td class="greater">'.$animal2["velocita"].'k/h <br> '.($animal2["velocita"]*0.621371).' m/h'.'</td>';
-    }
-    $tabella .= '</tr>
-    <tr>
-    <th scope="row" >Altezza</th>';
-    if($animal1["altezza"]>$animal2["altezza"]){
-        $tabella .= 
-        '<td class="greater">'.$animal1["altezza"].'m <br> '.($animal1["altezza"]*3.28084).' feet'.'</td>
-        <td class="smaller">'.$animal2["altezza"].'m <br> '.($animal2["altezza"]*3.28084).' feet'.'</td>';
-    } else {
-        $tabella .= 
-        '<td class="smaller">'.$animal1["altezza"].'m <br> '.($animal1["altezza"]*3.28084).' feet'.'</td>
-        <td class="greater">'.$animal2["altezza"].'m <br> '.($animal2["altezza"]*3.28084).' feet'.'</td>';
-    }
-    $tabella .= '</tr>
-    <tr>
-    <th scope="row" >Habitat</th>';
-    
-    $tabella .= 
-        '<td>'.$animal1["habitat"].'</td>
-        <td>'.$animal2["habitat"].'</td>';
-
-    $tabella.='</tr>
-    </tbody>
-    </table>
-    <br>';
-*/  
+ 
     echo $tabella;
 
 ?>

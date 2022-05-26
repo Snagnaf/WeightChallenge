@@ -64,8 +64,14 @@ $(document).ready(function (){
       name_utente: sessionStorage.utente
     },
     function(data,status){
-      if(status)
+      if(status){
         $("#machebelloilcarosello").html(data);
+        
+        $(".cell").each(function(){
+          $(this).css({"left":Math.random()*$(".board").width()+"px"});
+          $(this).css({"top":Math.random()*$(".board").height()+"px"});
+        });
+      }
       else
         $("#machebelloilcarosello").html("<br><br><br><h1>problemi di connessione</h1>");
     });
@@ -93,6 +99,7 @@ $(document).ready(function (){
   );
 
   //Selezione animali
+  
   $("#animal_image_1,#animal_image_2").click(function(){
     if(choosing)return;
     choosing=true;
@@ -102,7 +109,10 @@ $(document).ready(function (){
     });
   });
 
+  
 });
+
+
 
 //Log out utente
 function resetStorageUtente(){
@@ -110,21 +120,24 @@ function resetStorageUtente(){
   sessionStorage.utente="";
 }
 
-//select with touch
-function select_touch(ev){
+//select cell
+$(document).on("click",".cell",select);
+
+function select(){
+  target = this.children[0];
   if(!choosing) return;
     choosing=false;
-    console.log(ev.target);
+    console.log(target);
     var box = $("img.blink-bg")[0];
     
-    box.src=ev.target.src;
+    box.src=target.src;
     console.log(box);
     $(box).removeClass("blink-bg");
     $(".cell").each(function(){
       $(this).removeClass("blink-bg");
     });
 
-    var temp_id=ev.target.id.split("_by_");
+    var temp_id=target.id.split("_by_");
     if(box.id =="animal_image_1"){
       animale1=temp_id[0];
       utente1=temp_id[1];
@@ -137,7 +150,6 @@ function select_touch(ev){
 
 // Drag and drop
 function allowDrop(ev) {
-
   ev.preventDefault();
 }
 
@@ -146,28 +158,47 @@ function drag(ev) {
 }
 
 function drop(ev) {
-  if(!choosing) return;
-  choosing=false;
-  $(ev.target).removeClass("blink-bg");
-  $(".cell").each(function(){
-    $(this).removeClass("blink-bg");
-  });
-  $(ev.target).addClass("");
-  ev.preventDefault();
   var data= ev.dataTransfer.getData("text");
-  var elem_animale = document.getElementById(data);
-  var box = ev.target;
-  box.src=elem_animale.src;
+  var animale1_drop = document.getElementById(data);
+  var animale2_drop = ev.target;
+  var parent = animale2_drop.parentElement;
+  parent.innerHTML="";
 
-  var temp_id=data.split("_by_");
-  
-  if(box.id =="animal_image_1"){
-    animale1=temp_id[0];
-    utente1=temp_id[1];
-  }else{
-    animale2=temp_id[0];
-    utente2=temp_id[1];
-  }
+  var temp_id=animale1_drop.id.split("_by_");
+  var animale1_ns=temp_id[0];
+  var animale1_us=temp_id[1];
+
+  temp_id=animale2_drop.id.split("_by_");
+  var animale2_ns=temp_id[0];
+  var animale2_us=temp_id[1];
+      
+  $.get("winner.php",
+  {
+    id_animal1: animale1_ns,
+    utente_animal1: animale1_us,
+    id_animal2: animale2_ns,
+    utente_animal2: animale2_us,
+  },
+  function(data,status){
+    if(status){
+      if(animale1_drop.id==data){
+        parent.appendChild(animale1_drop);
+        parent.classList.add("eat_true");
+      
+        setTimeout(function(){
+          parent.className = "cell border border-2 border-warning";
+        }, 2000);
+      }else{
+        parent.appendChild(animale2_drop);
+        parent.classList.add("eat_false");
+      
+        setTimeout(function(){
+          parent.className = "cell border border-2 border-warning";
+        }, 2000);
+      }
+    }
+  });
+
 }
 
 //Search
@@ -210,7 +241,3 @@ async function search(){
   }, 2000);
 }
   
-
-
-
-

@@ -152,53 +152,52 @@ button.button1{
         margin: 0;
     
     }
+    .board{
+        overflow:scroll;
+        position:relative;
+        display:flex;
+        flex-wrap: wrap;
+        background-color: #9A2727;
+    }
+    .cell{
+        flex: 0 0 95px;
+        top:0px;
+        left:0px;
+        position:initial;
+        
+
+    }
 
 
 }
 
 
 /*old part*/
-.header{
-    background-image: linear-gradient(rgb(133, 142, 214), rgb(161, 86, 161));
-    
-    text-align: center;
-    height: 30vh;
-    min-height: 140px;
-    padding-top: 30px;
-}
-.titolo{
-    font: bold 50px "Courier New";
-}
-
-.tail{
-    text-align: center;
-    background-image: linear-gradient(rgb(161, 86, 161),white);
-    height: 25vh;
-    padding-top: 20px;
-    overflow-y: visible;
-}
-.board{
+.carousel-item{
     background: url("img/jungle.jpg");
     background-size: cover;
     height:100vh;
     width: 100vw;
-    display: flex;
-    flex-direction: row;
-    flex-flow:wrap;
     padding: 100px;
-
-    position:relative;
 
 }
 
-.cell{
+.board{
+    width:100%;
+    height:100%;
+    position:relative;
     
+}
+
+.cell{
+    position:absolute;
     width: 95px;
     height: 95px;
     padding: 5px;
     background-color: rgb(255, 241, 255);
     transition: background-color .5s;
-    flex: 0 0 95px;
+    top: 0px;
+    left:0px;
     border-radius: 20px;
     
 }
@@ -206,21 +205,7 @@ button.button1{
     background-color: rgb(255, 211, 160);
     
 }
- 
-.challenge{
-    width:90%;
-    max-width:600px;
-    margin: auto;
-    
-}
-.greater{
-    --bs-table-bg: rgba(0, 128, 0, 0.76);
-    --bs-table-striped-bg: rgba(0, 128, 0, 0.363);
-}
-.smaller{
-    --bs-table-bg: rgba(185, 50, 50, 0.938);
-    --bs-table-striped-bg: rgba(185, 50, 50, 0.664);
-}
+
 
 .blink-bg{
     animation: pulsate 1s ease-out;

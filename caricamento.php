@@ -15,7 +15,6 @@
   f
 	while ($animal = mysqli_fetch_array($result))
 	{...}
-  
   */
   
   //PostrgreSQL
@@ -40,16 +39,16 @@
       //un carosello deve essere attivo
       if($active){
         $arr_habitat[$animal["habitat"]] = '<div class="carousel-item active"  data-bs-interval="none">
-        <div id="'.$animal["habitat"].'" class="board " style="width: 100vw; height: 100vh; ">';
+        <div id="'.$animal["habitat"].'" class="board"  ">';
         $active=false;
       }else{
         $arr_habitat[$animal["habitat"]] = '<div class="carousel-item"  data-bs-interval="none">
-        <div id="'.$animal["habitat"].'" class="board " style="width: 100vw; height: 100vh; ">';
+        <div id="'.$animal["habitat"].'" class="board "  ">';
       }
     }
-    $arr_habitat[$animal["habitat"]] .= '<div class="cell border border-2 border-warning">
-      <img src="data:'.$animal["type"].';base64,'.$animal["foto"].'" id="'.$animal["nome_scientifico"].'_by_'.$animal["utente"].'_by_'.$animal["nome"].'" draggable=true ondragstart="drag(event)"
-      ondragover="allowDrop(event)" ontouchstart="select_touch(event)"
+    $arr_habitat[$animal["habitat"]] .= '<div class="cell border border-2 border-warning" >
+      <img src="data:'.$animal["type"].';base64,'.$animal["foto"].'" id="'.$animal["nome_scientifico"].'_by_'.$animal["utente"].'_by_'.$animal["nome"].'"
+      draggable=true ondragstart="drag(event)" ondragover="allowDrop(event)" ondrop="drop(event)"
       height="80" width="80"> 
       </div>
       ';
