@@ -98,8 +98,9 @@
         $result = pg_query_params($dbconn, $query, array($name));
         if($tuple = pg_fetch_array($result,null,PGSQL_ASSOC)){
             echo "<h1>Registrazione fallita</h3><br>";
-            echo "Nel nostro sito essere una name uguale da prima di te<br>";
+            echo "Esiste già un utente con questo nome<br>";
             echo "Vai <a href='../login/login.html'> qui</a> per loggarti!";
+            echo "Per riprovare clicca <a href='../login/registrazione.html'> qui</a>!";
         }else{
             $password = md5($_POST["inputPassword"]); //md5 codifica la password
             $query2 = 'insert into utente values ($1,$2)';
@@ -108,7 +109,8 @@
                 echo "<h2>Registrazione andata a buon fine</h2><br>";
                 echo "Vai <a href='../login/login.html'> qui</a> per loggarti!";
             }else{
-                echo"<h1 >ERROOREEEEE</h1>";
+                echo"<h1>Ops!</h1>";
+                echo "Problemi nella registrazione, ";
                 echo "riprova <a href='registrazione.html'> qui</a>!";
             }
         }

@@ -108,8 +108,7 @@ $(document).ready(function (){
 
 
 $("#carouselExampleControls").carousel();
-$("#carouselExampleControls").on('slid.bs.carousel', new_position);
-  
+  $("#carouselExampleControls").on('slid.bs.carousel', new_position);
 });
 
 //Posizionamento celle e animali
@@ -123,8 +122,8 @@ function getRandomInt(min, max) {
 
 function new_position(){
   var cells = $("div.carousel-item.active > div.board > div.cell").length;
-  var column = Math.floor($(".board").width()/($(".cell").width()+10));
-  var row = Math.floor($(".board").height()/($(".cell").height()+10));
+  var column = Math.floor($("div.carousel-item.active > div.board").width()/($(".cell").width()+10));
+  var row = Math.floor($("div.carousel-item.active > div.board").height()/($(".cell").height()+10));
   var left= -1;
   var top = 0;
   var free = [];
@@ -142,7 +141,6 @@ function new_position(){
         top = getRandomInt(0,row-1);
       }while(!free[top][left]);
       free[top][left]=false;
-      
     }else{
       $(".board").css({"overflow":"scroll"});
       if(left == column-1){

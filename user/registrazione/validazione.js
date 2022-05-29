@@ -1,17 +1,11 @@
 function valida(){
-    if(controllaCAP()){
-        if(document.getElementById("rmb").checked){
-            alert("Hai scelto di essere ricordato!");
-        }else{
-            alert("Hai scelto di non essere ricordato!");
-        }
-    }else{
-        alert("errore nel CAP");
+    if(!controllaNome()){
+        alert("errore");
     }
         
 }
 
-function controllaCAP(){
-    const cap = document.myForm.inputCap.value;
-    return cap.length == 5 && !isNaN(cap)
+function controllaNome(){
+    const nome = document.myForm.inputNome.value;
+    return nome.length <= 40 && !isNaN(cap);
 }

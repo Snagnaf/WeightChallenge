@@ -37,13 +37,16 @@
   foreach($arr as $animal){
     if(!array_key_exists($animal["habitat"], $arr_habitat)){
       //un carosello deve essere attivo
+
       if($active){
-        $arr_habitat[$animal["habitat"]] = '<div class="carousel-item active"  data-bs-interval="none">
-        <div id="'.$animal["habitat"].'" class="board"  ">';
+        $arr_habitat[$animal["habitat"]] = '<div class="carousel-item active"  data-bs-interval="none"
+        style="background-image:url(img/'.$animal["habitat"].'.jpg)">
+        <div id="'.$animal["habitat"].'" class="board"   >';
         $active=false;
       }else{
-        $arr_habitat[$animal["habitat"]] = '<div class="carousel-item"  data-bs-interval="none">
-        <div id="'.$animal["habitat"].'" class="board "  ">';
+        $arr_habitat[$animal["habitat"]] = '<div class="carousel-item"  data-bs-interval="none"
+        style="background-image:url(img/'.$animal["habitat"].'.jpg)">
+        <div id="'.$animal["habitat"].'" class="board "  >';
       }
     }
     $arr_habitat[$animal["habitat"]] .= '<div class="cell border border-2 border-warning" >
