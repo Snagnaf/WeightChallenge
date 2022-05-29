@@ -4,8 +4,9 @@ var animale2="";
 var utente1="";
 var utente2="";
 var choosing=false;
-
+ 
 $(document).ready(function (){
+  
   //Gestione utente
   var s  = "";
   
@@ -65,15 +66,11 @@ $(document).ready(function (){
     },
     function(data,status){
       if(status){
-        $("#machebelloilcarosello").html(data);
-        
-        $(".cell").each(function(){
-          $(this).css({"left":Math.random()*$(".board").width()+"px"});
-          $(this).css({"top":Math.random()*$(".board").height()+"px"});
-        });
+        $("#ilcarosello").html(data);
+        $(".cell").each(new_position);
       }
       else
-        $("#machebelloilcarosello").html("<br><br><br><h1>problemi di connessione</h1>");
+        $("#ilcarosello").html("<br><br><br><h1>problemi di connessione</h1>");
     });
     
   document.getElementById("gruppo_bottoni").innerHTML +=s;
@@ -109,8 +106,57 @@ $(document).ready(function (){
     });
   });
 
+
+$("#carouselExampleControls").carousel();
+$("#carouselExampleControls").on('slid.bs.carousel', new_position);
   
 });
+
+//Posizionamento celle e animali
+$(window).resize(new_position);
+
+
+
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function new_position(){
+  var cells = $("div.carousel-item.active > div.board > div.cell").length;
+  var column = Math.floor($(".board").width()/($(".cell").width()+10));
+  var row = Math.floor($(".board").height()/($(".cell").height()+10));
+  var left= -1;
+  var top = 0;
+  var free = [];
+  for(var i=0; i<row; i++) {
+    free[i] = [];
+    for(var j=0; j<column; j++) {
+        free[i][j] = true;
+    }
+  }
+  $("div.carousel-item.active > div.board > div.cell").each(function(){
+    if(cells<column*row){
+      $(".board").css({"overflow":"visible"});
+      do{
+        left = getRandomInt(0,column-1);
+        top = getRandomInt(0,row-1);
+      }while(!free[top][left]);
+      free[top][left]=false;
+      
+    }else{
+      $(".board").css({"overflow":"scroll"});
+      if(left == column-1){
+        left=0;
+        top+=1;
+      }else
+        left+=1;
+    }
+    $(this).css({"left":left*($(".cell").width()+10)+"px"});
+    $(this).css({"top":top*($(".cell").height()+10)+"px"});
+    $(this).css({"trasition":"left 1s,top 1s"});
+  });
+  
+}
 
 
 
@@ -214,10 +260,9 @@ async function search(){
     var temp_id = img.id.toLowerCase();
     if(temp_id.match(animal.toLowerCase())){
       habitat= this.parentElement.id;
-      var picture = document.getElementById(img.id); 
-      cell = picture.parentElement;
+      cell = img.parentElement;
+      return;
     }
-    return;
   });
   if(habitat==null) {
     alert("Nessuna corrispondenza!");

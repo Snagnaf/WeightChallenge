@@ -101,12 +101,15 @@ h5{
 
 
 
-table tr td p, table tr td img{
+table tr td p {
     padding: 0 80px;
     margin: 0;
 
 }
 
+table tr td img {
+    padding: 0 20px;
+}
 
 
 button.button1{
@@ -119,7 +122,10 @@ button.button1{
     margin-left: 10px;
 }
 
-
+.animalvs1, .animalvs2 {
+    width: 30%;
+    height: 50%;
+}
 
 @media (max-width: 768px) {
     .addbutt {
@@ -147,30 +153,27 @@ button.button1{
     }
 
 
-    table tr td p, table tr td img{
+    table tr td p {
         padding: 0 20px;
         margin: 0;
     
     }
-    .board{
-        overflow:scroll;
-        position:relative;
-        display:flex;
-        flex-wrap: wrap;
-        background-color: #9A2727;
-    }
-    .cell{
-        flex: 0 0 95px;
-        top:0px;
-        left:0px;
-        position:initial;
-        
 
+    .animalvs1 {
+        padding-left: 0;
+        padding-right: 30px;
     }
 
+    .animalvs2 {
+        padding-right: 0;
+        padding-left: 30px;
+    }
 
+    .animalvs1, .animalvs2 {
+        width: 50%;
+        height: 50%;
+    }
 }
-
 
 /*old part*/
 .carousel-item{
@@ -199,6 +202,7 @@ button.button1{
     top: 0px;
     left:0px;
     border-radius: 20px;
+    transition:left 1s,top 1s;
     
 }
 .cell:hover{

@@ -12,14 +12,18 @@ body {
 
 .form {
   z-index: 15;
-  position: relative;
+  position: fixed;
   background: #FFFFFF;
   width: 600px;
   border-radius: 4px;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.397);
   box-sizing: border-box;
-  margin: 200px auto 10px;
   overflow: hidden;
+  top: 50%;
+  left: 50%;
+  margin-top: -250px;
+  margin-left: -300px;
+
 }
 
 
@@ -122,7 +126,8 @@ body {
 
     .form {
       width: auto;
-      margin: 160px 0;
+      margin: -230px auto;
+      left: 0;
     }
   
     .form-panel {
