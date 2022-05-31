@@ -1,4 +1,4 @@
-//Animali selezionati
+//Per selezione animali
 var animale1="";
 var animale2=""; 
 var utente1="";
@@ -8,56 +8,26 @@ var choosing=false;
 $(document).ready(function (){
   
   //Gestione utente
-  var s  = "";
   
-  if (typeof(localStorage.utente) == "undefined" || localStorage.utente =="") {
-    localStorage.utente="";
-    if(typeof(sessionStorage.utente) == "undefined" || sessionStorage.utente ==""){
-      sessionStorage.utente="";
-      s += `
-      <div class="btn-group" >
-        <button type="button" class="btn btn-success ms-3 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" >
-          + new Animal
-        </button>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="user/login/login.html">Log in</a></li>
-          <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item" href="user/registrazione/registrazione.html">New Account</a></li>
-        </ul>
-      </div>
-    `;
-
-    }else{
-      s += `
-      <div class="btn-group" >
-        <button type="button"  class="btn btn-success ms-3 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" >
-          `+sessionStorage.utente+`
-        </button>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="form/form.html">+ add Animal</a></li>
-          <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item" href="index.html" onclick="resetStorageUtente()">Log out</a></li>
-        </ul>
-      </div> 
-    `;
-    }
-    
-    
+  console.log(localStorage.utente);
+  if (typeof(localStorage.utente) == "undefined") {
+    localStorage.setItem("utente","");
+    sessionStorage.setItem("utente","");
   }else{
-    sessionStorage.utente=localStorage.utente;
-    s += `
-      <div class="btn-group" >
-        <button type="button"  class="btn btn-success ms-3 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" >
-          `+sessionStorage.utente+`
-        </button>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="form/form.html">+ add Animal</a></li>
-          <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item" href="index.html" onclick="resetStorageUtente()">Log out</a></li>
-        </ul>
-      </div> 
-    `;
+    if(localStorage.utente!="")
+      sessionStorage.setItem("utente",localStorage.utente);
   }
+  if (sessionStorage.utente !=""){
+    $("#addAnimal").text(sessionStorage.utente);
+    $("#addAnimal_login").text("add Animal");
+    $("#addAnimal_desc").text("");
+    $("#addAnimal_login").attr("href", "form/form.html");
+    $("#addAnimal_signup").text("Logout");
+    $("#addAnimal_signup").attr('href','index.html' );
+    $("#addAnimal_signup").attr('onclick','resetUtente()');
+  }
+  
+  
 
   //Caricamento degli elementi
   $.get("caricamento.php",
@@ -73,25 +43,28 @@ $(document).ready(function (){
         $("#ilcarosello").html("<br><br><br><h1>problemi di connessione</h1>");
     });
     
-  document.getElementById("gruppo_bottoni").innerHTML +=s;
+
+
+  //Ricerca
+  $("#idpd").click(search());
 
 
   //Confronto tra gli animali selezionati
   $("#confronta_button").click( function(){
     if((animale1=="") || (animale2 == "")) return;
-      $.get("confronta.php",
-        {
-          id_animal1: animale1,
-          utente_animal1: utente1,
-          id_animal2: animale2,
-          utente_animal2: utente2,
-        },
-        function(data,status){
-          if(status)
-            $("#sfida").html(data);
-          else
-            $("#sfida").html("<h3>Problemi di connessione</h3>");
-        });
+    $.get("confronta.php",
+      {
+        id_animal1: animale1,
+        utente_animal1: utente1,
+        id_animal2: animale2,
+        utente_animal2: utente2,
+      },
+      function(data,status){
+        if(status)
+          $("#sfida").html(data);
+        else
+          $("#sfida").html("<h3>Problemi di connessione</h3>");
+      });
     }
   );
 
@@ -107,14 +80,14 @@ $(document).ready(function (){
   });
 
 
-$("#carouselExampleControls").carousel();
+
+//Posizionamento celle e animali
+
+  $("#carouselExampleControls").carousel();
   $("#carouselExampleControls").on('slid.bs.carousel', new_position);
 });
 
-//Posizionamento celle e animali
 $(window).resize(new_position);
-
-
 
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -122,8 +95,8 @@ function getRandomInt(min, max) {
 
 function new_position(){
   var cells = $("div.carousel-item.active > div.board > div.cell").length;
-  var column = Math.floor($("div.carousel-item.active > div.board").width()/($(".cell").width()+10));
-  var row = Math.floor($("div.carousel-item.active > div.board").height()/($(".cell").height()+10));
+  var column = Math.floor($("div.carousel-item.active > div.board").width()/$(".cell").outerWidth());
+  var row = Math.floor($("div.carousel-item.active > div.board").height()/$(".cell").outerHeight());
   var left= -1;
   var top = 0;
   var free = [];
@@ -149,8 +122,8 @@ function new_position(){
       }else
         left+=1;
     }
-    $(this).css({"left":left*($(".cell").width()+10)+"px"});
-    $(this).css({"top":top*($(".cell").height()+10)+"px"});
+    $(this).css({"left":left*$(".cell").outerWidth()+"px"});
+    $(this).css({"top":top*$(".cell").outerHeight()+"px"});
     $(this).css({"trasition":"left 1s,top 1s"});
   });
   
@@ -159,12 +132,13 @@ function new_position(){
 
 
 //Log out utente
-function resetStorageUtente(){
+function resetUtente(){
+  console.log("perchee?");
   localStorage.utente="";
   sessionStorage.utente="";
 }
 
-//select cell
+//Selezione animali
 $(document).on("click",".cell",select);
 
 function select(){

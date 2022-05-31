@@ -1,5 +1,69 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+.btn{
+    border-radius: 6px !important;
+}
+form {
+  position: relative;
+  width: 50%;
+  background: white;
+  border-radius: 6px;
+}
 
+input,
+#idpd {
+  height: 38px;
+  border: 0;
+  color: white;
+  font-size: 22px;
+}
+input[type="search"] {
+  outline: 0; 
+  width: 100%;
+  background: white;
+  padding: 0 10px;
+  border-radius: 6px;
+  appearance: none;
+  transition: all 0.5s ease-out;
+  transition-property: width, border-radius;
+  z-index: 1;
+  position: relative;
+  color: black;
+}
+#idpd {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 3rem;
+  background: #198754;
+  border-radius: 0 6px 6px 0;
+}
+input:not(:placeholder-shown) {
+  border-radius: 6px 0 0 6px;
+  width: calc(100% - 3rem); 
+}
+input:not(:placeholder-shown) + button {
+  display: block;
+}
+
+button.btn.btn-success.dropdown-toggle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button.btn.btn-success.dropdown-toggle svg:nth-of-type(1){
+    margin: 2.5px 5px 0 0;
+}
+
+button.btn.btn-success.dropdown-toggle svg:nth-of-type(2){
+    margin: 2.3px 0 0 10px;
+}
+
+button.btn.btn-success.dropdown-toggle::after{
+    display: none !important;
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
 
 li, a, button{
@@ -11,8 +75,10 @@ li, a, button{
 
 
 p{
-    color: white;
+    color: rgb(0, 0, 0);
     font-family: 'Open Sans', sans-serif;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .modal-body p{
@@ -55,6 +121,12 @@ p{
     text-transform: uppercase;
     cursor: pointer;
     letter-spacing: 0.15em; 
+    
+}
+
+.button1:hover {
+    background:rgb(0, 54, 17);
+    transition: 0.5s;
 }
 
 .modal-body table th{
@@ -85,7 +157,6 @@ h5{
     background: linear-gradient(0deg, rgba(226,226,226,1) 0%, rgba(255,255,255,0) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#e2e2e2",endColorstr="#ffffff",GradientType=1);
 }
-
 
 
 
@@ -120,12 +191,19 @@ button.button1{
 
 .addbutt{
     margin-left: 10px;
+
 }
+
 
 .animalvs1, .animalvs2 {
     width: 30%;
     height: 50%;
 }
+
+.dropdown-item:hover {
+    background-color: rgba(0, 128, 0, 0.491) !important;
+}
+
 
 @media (max-width: 768px) {
     .addbutt {
@@ -135,6 +213,16 @@ button.button1{
     #collapsingNavbar3 {
         margin-top: 20px;
     }
+    ul.dropdown-menu.show{
+        width: 150px;
+        position: absolute;
+        margin: 0;
+    }
+    button.btn.btn-success.dropdown-toggle.show, button.btn.btn-success.dropdown-toggle {
+        width: 183px;
+    }
+    
+ 
 
 }
 @media (max-width: 576px){
@@ -239,14 +327,6 @@ button.button1{
 
 
 
-/* Make the element pulse (grow large and small slowly) */
-/* Usage
-    .myElement {
-        animation: pulsate 1s ease-out;
-        animation-iteration-count: infinite;
-        opacity: 1; 
-    }
-*/
 @keyframes pulsate {
     25% {-webkit-transform: scale(0.9, 0.9); opacity: 1.0;}
     50% {opacity: 1.0;}
@@ -254,28 +334,14 @@ button.button1{
     100% {opacity: 1.0;}
 }
 
-/* Make the element's opacity pulse*/
-/* Usage
-    .myElement {
-        animation: opacityPulse 1s ease-out;
-        animation-iteration-count: infinite;
-        opacity: 0; 
-    }
-*/
+
 @keyframes opacityPulse {
     0% {opacity: 0.0;}
     50% {opacity: 1.0;}
     100% {opacity: 0.0;}
 }
 
-/* Make the element's background pulse. I call this alertPulse because it is red. You can call it something more generic. */
-/* Usage
-    .myElement {
-        animation: alertPulse 1s ease-out;
-        animation-iteration-count: infinite;
-        opacity: 1; 
-    }
-*/
+
 @keyframes alertPulse {
     0% {opacity: #9A2727; opacity: 1;}
     50% {opacity: red; opacity: 0.9; }
@@ -283,29 +349,6 @@ button.button1{
 }
 
 
-/* Make the element rotate infinitely. */
-/* 
-Usage
-    .myElement {
-        animation: rotating 3s linear infinite;
-    }
-*/
-@keyframes rotating {
-  from {
-    -ms-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-    -webkit-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  to {
-    -ms-transform: rotate(360deg);
-    -moz-transform: rotate(360deg);
-    -webkit-transform: rotate(360deg);
-    -o-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
 
 
 

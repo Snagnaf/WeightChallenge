@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="stylesignup.css" type="text/css">
     <link rel="stylesheet" href="../../bootstrap/css/bootstrap.css">
-    <script src="validazione.js" type="application/javascript" ></script>
     <script src="../../bootstrap/js/bootstrap.js" type="application/javascript" ></script>
     <title>Registrazione</title>
 </head>
@@ -30,11 +29,11 @@
       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
            <div class="modal-header">
-             <h5 class="modal-title" id="staticBackdropLabel">MODAL TITLE</h5>
+             <h5 class="modal-title" id="staticBackdropLabel">CHI SIAMO</h5>
              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
            </div>
            <div class="modal-body">
-             <p>parole</p>
+             <p>Ciao! Siamo Eugenio e Matteo, studenti rispettivamente di Ingegneria Informatica ed Informatica. Questo è il nostro progetto per l'esame di LTW!</p>
            </div>
            <div class="modal-footer">
              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -50,15 +49,14 @@
             <h1>AnimalSize Registrazione</h1>
           </div>
           <div class="form-content">
-            <form name="myForm" action="validateRegistration.php" method="post" class="form-singin"
-            onsubmit="valida()">
+            <form name="myForm" action="validateRegistration.php" method="post" class="form-singin">
               <div class="form-group">
                 <label for="username">Nome utente</label>
-                <input id="username" type="text" name="inputName" required="required" class="from-control"/>
+                <input id="username" type="text" name="inputName" required="required" class="from-control" maxlength="100"/>
               </div>
               <div class="form-group">
                 <label for="password">Password</label>
-                <input id="password" type="password" name="inputPassword" required="required" class="from-control"/>
+                <input id="password" type="password" name="inputPassword" required="required" class="from-control" maxlength="100"/>
               </div>
              
               <div class="form-group">

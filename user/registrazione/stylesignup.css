@@ -4,12 +4,17 @@ html {
 }
 
 body {
-  background-image: url(../../img/jungle2.jpg);
+  background-image: url(../../img/jungle.jpg);
   background-repeat: no-repeat;
   background-size: cover;
 
 }
 
+li, a{
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.1em;
+  text-decoration: none;
+}
 
 .form {
   z-index: 15;

@@ -118,7 +118,7 @@
         $result = pg_query_params($dbconn, $query, array($animal,$user));
         if($tuple = pg_fetch_array($result,null,PGSQL_ASSOC)){
             echo "<h1>Registrazione fallita</h3><br>";
-            echo "Nel nostro sito essere un animale uguale da prima<br>";
+            echo "Hai già inserito questo animale<br>";
             echo"Riprova a crearne un altro <a href='form.html'> qui</a> !";
         }else{
             
@@ -153,7 +153,8 @@
                 echo "<h2>Inserimento andato a buon fine</h2><br>";
                 echo "Vai <a href='../index.html'> qui</a> per continuare!";
             }else{
-                echo"<h1 >ERROOREEEEE</h1>";
+                echo"<h1 >Ops!</h1>";
+                echo "Qualcosa è andato storto,";
                 echo "riprova <a href='form.html'> qui</a>!";
             }
             pg_close($dbconn);

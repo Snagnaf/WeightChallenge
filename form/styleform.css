@@ -3,13 +3,18 @@ html {
   height: 100%;
 }
 
+
 body {
-  background-image: url(../img/jungle2.jpg);
+  background-image: url(../img/jungle.jpg);
   background-repeat: no-repeat;
   background-size: cover;
-
 }
 
+li, a{
+ font-family: 'Open Sans', sans-serif;
+ font-size: 1.1em;
+ text-decoration: none;
+}
 
 .form {
   z-index: 15;
@@ -23,7 +28,7 @@ body {
   left: 50%;
   margin-top: -380px;
   margin-left: -300px;
-  overflow: hidden;
+  overflow:hidden;
   height: auto;
 }
 
@@ -132,4 +137,10 @@ body {
  .form-group label {
    margin-right: 20px;
  }
+}
+@media(max-height: 890px){
+	.form{
+    	position:relative;
+        margin-top:0;
+    }
 }

@@ -12,7 +12,7 @@
 <body>
     <nav class="navbar justify-content-center fixed-top bg-dark navbar-dark">
         <div class="container">
-            <a href="../../index.html" class="navbar-brand d-flex w-50 me-auto">ANIMAL SIZE</a>
+            <a href="index.html" class="navbar-brand d-flex w-50 me-auto">ANIMAL SIZE</a>
             
            
                 <ul class="nav navbar-nav justify-content-end py-1">

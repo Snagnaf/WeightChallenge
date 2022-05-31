@@ -98,7 +98,7 @@
             $result = pg_query_params($dbconn, $query, array($name));
             if(!$tuple = pg_fetch_array($result,null,PGSQL_ASSOC)){
                 echo "Login fallito<h3 id='nome'></h3>";
-                echo "Nel nostro sito non essere questa name";
+                echo "Nel nostro sito non è presente questo utente!";
                 echo "Vai <a href='../registrazione/registrazione.html'> qui</a> per registrarti!";
             }else{
                 $password = md5($_POST["inputPassword"]); // Codifica
@@ -109,8 +109,8 @@
                     echo "Bentornato <h3 id='nome' >$name</h3>";
                     echo "il login andato a essere buona fine";
                 }else{
-                    echo "<h1>Errorrrreee</h1><h3 id='nome'></h3>";
-                    echo "riprova <a href='login.html'> qui</a>!";
+                    echo "<h1>Ops!</h1><h3 id='nome'></h3>";
+                    echo "Qualcosa è andato storto, riprova <a href='login.html'> qui</a>!";
                 }
             }
 
@@ -119,7 +119,7 @@
           </div>
         </div>
         <div class="form-group">
-          <button type="button" class="backbutt" onclick="document.location='../../index.html'" >TORNA ALLA HOME</button>
+          <button type="button" class="backbutt" onclick="document.location='../../index.html'">TORNA ALLA HOME</button>
         </div>
       </div>
       

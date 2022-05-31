@@ -17,168 +17,111 @@
 
   </head>
 
-<body>
-  <nav class="navbar navbar-expand-md justify-content-center fixed-top bg-dark navbar-dark">
-    <div class="container">
-        <a href="#logo" class="navbar-brand d-flex w-50 me-auto">ANIMAL SIZE</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsingNavbar3">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="navbar-collapse collapse w-100" id="collapsingNavbar3">
-            <ul class="navbar-nav w-100 justify-content-center" id="gruppo_bottoni">
-              
-              <div class="input-group w-50">
-                <span class="input-group-text" id="basic-addon1" onclick="search()">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-                  </svg>
-                </span>
-                <input type="text" id="search-text" class="form-control" placeholder="Cerca un animale" aria-label="Cerca un animale" aria-describedby="basic-addon1">
-              </div>
-<!--
-              <a href="login.html" class="button btn btn-success addbutt">Aggiungi un animale!</a>
--->
-            </ul>
-            <ul class="nav navbar-nav ms-auto w-100 justify-content-end">
-                <li class="nav-item">
-                    <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#aboutus">ABOUT US</a>
-                </li>
-            </ul>
+  <body>
+    <nav class="navbar navbar-expand-md justify-content-center fixed-top bg-dark navbar-dark">
+      <div class="container">
+          <a href="index.html" class="navbar-brand d-flex w-50 me-auto">ANIMAL SIZE</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsingNavbar3">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="navbar-collapse collapse w-100" id="collapsingNavbar3">
+              <ul class="navbar-nav w-100 justify-content-center">
+                <form onsubmit="event.preventDefault();" role="search">
+                  <input id="search-text" type="search" placeholder="Cerca un animale" autofocus required />
+                  <button id="idpd" type="submit">Go</button>    
+                </form>
+                <div class=" dropend addbutt nav-item">
+                  <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"></path>
+                    </svg>
+                    <b id="addAnimal">new animal</b>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+                      <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+                    </svg>
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><p id="addAnimal_desc">Per aggiungere un animale devi essere loggato!</p></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="user/login/login.html" id="addAnimal_login">Login</a></li>
+                    <li><a id="addAnimal_signup" class="dropdown-item" href="user/registrazione/registrazione.html">Signup</a></li>
+                    
+                  </ul>
+                </div>
+              </ul>
+              <ul class="nav navbar-nav ms-auto w-100 justify-content-end">
+                  <li class="nav-item">
+                      <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#aboutus">ABOUT US</a>
+                  </li>
+              </ul>
+          </div>
+      </div>
+    </nav>
+    
+    <div class="modal fade" id="aboutus" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+           <div class="modal-header">
+             <h5 class="modal-title" id="staticBackdropLabel">CHI SIAMO</h5>
+             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+           </div>
+           <div class="modal-body">
+             <p>Ciao! Siamo Eugenio e Matteo, studenti rispettivamente di Ingegneria Informatica ed Informatica. Questo è il nostro progetto per l'esame di LTW!</p>
+           </div>
+           <div class="modal-footer">
+             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+           </div>
         </div>
-    </div>
-  </nav>
-  
-  <div class="modal fade" id="aboutus" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-      <div class="modal-content">
-         <div class="modal-header">
-           <h5 class="modal-title" id="staticBackdropLabel">CHI SIAMO</h5>
-           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-         </div>
-         <div class="modal-body">
-           <p>Ciao! Siamo Eugenio e Matteo, studenti rispettivamente di Ingegneria Informatica ed Informatica. Questo è il nostro progetto per l'esame di LTW!</p>
-         </div>
-         <div class="modal-footer">
-           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
-         </div>
       </div>
     </div>
-  </div>
-
-  <div id="carouselExampleControls" class="carousel carousel-dark slide" data-bs-interval="false">
-    <div class="carousel-inner" id="ilcarosello">
-      
+  
+    <div id="carouselExampleControls" class="carousel carousel-dark slide" data-bs-interval="false">
+      <div class="carousel-inner" id="ilcarosello">
+        
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev" style="max-width:100px;">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next" style="max-width:100px;">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev" style="max-width:100px;">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next" style="max-width:100px;">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
-
-  <nav class="navbar navbar-expand-md justify-content-center fixed-bottom nav2">
-    <div class="container d-flex justify-content-between">
-            <ul class="nav navbar-nav me-auto">
-              <img src="img/icons8-plus-96.png" id="animal_image_1" alt="img1" >
-            </ul>    
-            <ul class="navbar-nav">
-              <button type="button" id="confronta_button" class="button1" data-bs-toggle="modal" data-bs-target="#confrontmodal">Confronta!</button>
-            </ul>
-            <ul class="nav navbar-nav ms-auto">
-              <img src="img/icons8-plus-96.png" id="animal_image_2" alt="img2" >
-            </ul>
-        </div>
-    </div>
-  </nav> 
-
-  <div class="modal fade" id="confrontmodal" tabindex="-1" aria-labelledby="confrontmodal" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title ms-auto" id="confrontmodal">CONFRONTO</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body" >
-          <div class="container-fluid justify-content-center" id="sfida">
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>Foto</th>
-                </tr>
-              </thead>
-              <tr>
-                <td class="d-flex justify-content-between">
-                  <img src="img/icons8-plus-96.png" alt="img1">
-                  <img src="img/icons8-plus-96.png" alt="img2">
-                </td>
-              </tr>
-              <thead>
-                <tr>
-                  <th>Nome</th>
-                </tr>
-              </thead>
-              <tr>
-                <td class="d-flex justify-content-between">
-                  <p>silvio</p>
-                  <p>berlu</p>
-                </td>
-              </tr>
-              <thead>
-                <tr>
-                  <th>Peso</th>
-                </tr>
-              </thead>  
-                <tr>
-                  <td class="d-flex justify-content-between">
-                    <p>300kg</p>
-                    <p>23g</p>
-                  </td>
-                </tr>
-                <thead>
-                  <tr>
-                    <th>Velocità</th>
-                  </tr>
-                </thead>
-                <tr>
-                  <td class="d-flex justify-content-between">
-                    <p>45m/s</p>
-                    <p>10m/s</p>
-                  </td>
-                </tr>
-                <thead>
-                  <tr>
-                    <th>Altezza</th>
-                  </tr>
-                </thead>
-                <tr>
-                  <td class="d-flex justify-content-between">
-                    <p>3m</p>
-                    <p>40cm</p>
-                  </td>
-                </tr>
-                <thead>
-                  <tr>
-                    <th>Habitat</th>
-                  </tr>
-                </thead>
-                <tr>
-                  <td class="d-flex justify-content-between">
-                    <p>Savana</p>
-                    <p>Oceano</p>
-                  </td>
-                </tr>
-              </table>
+  
+    <nav class="navbar navbar-expand-md justify-content-center fixed-bottom nav2">
+      <div class="container d-flex justify-content-between">
+              <ul class="nav navbar-nav me-auto">
+                <img src="img/icons8-plus-96.png" id="animal_image_1" alt="img1">
+              </ul>    
+              <ul class="navbar-nav">
+                <button type="button" id="confronta_button" class="button1" data-bs-toggle="modal" data-bs-target="#confrontmodal">Confronta!</button>
+              </ul>
+              <ul class="nav navbar-nav ms-auto">
+                <img src="img/icons8-plus-96.png" id="animal_image_2" alt="img2">
+              </ul>
+          </div>
+      </div>
+    </nav> 
+  
+    <div class="modal fade" id="confrontmodal" tabindex="-1" aria-labelledby="confrontmodal" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title ms-auto" id="confrontmodal">CONFRONTO</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="container-fluid justify-content-center" id="sfida">
+              Carica degli animali cliccando sui '+'!
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
           </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
-        </div>
       </div>
     </div>
-  </div>
-
-</body>
+  
+  </body>
 </html>
